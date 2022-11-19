@@ -1,0 +1,15 @@
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.CI.exe
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.CI.deps.json
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.CI.runtimeconfig.json
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.CI.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.CI.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.csproj.AssemblyReference.cache
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.AssemblyInfoInputs.cache
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.AssemblyInfo.cs
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.csproj.CoreCompileInputs.cache
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\refint\AkiraBot.CI.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.genruntimeconfig.cache
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\ref\AkiraBot.CI.dll
