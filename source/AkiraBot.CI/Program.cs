@@ -1,1 +1,4 @@
-﻿Console.Write("Hello there");
+﻿using AkiraBot.CI.Commands;
+
+var cmdController = new MainCommandsController();
+cmdController.StartReadCommands();

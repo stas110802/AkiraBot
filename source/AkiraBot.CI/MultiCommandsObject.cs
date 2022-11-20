@@ -31,7 +31,7 @@ public abstract class MultiCommandsObject<TResult> : VoidCommandsObject
     private TResult? InvokeFuncCommand(ConsoleKey key)
     {
         if (FuncCommands == null) 
-            throw new NullReferenceException($"{nameof(Commands)} uninitialized");
+            throw new NullReferenceException($"{nameof(Commands)} uninitialized.You need to create at least one command");
         
         var res = GetMethodValueByKey(key);
             
@@ -41,7 +41,7 @@ public abstract class MultiCommandsObject<TResult> : VoidCommandsObject
     private TResult? GetMethodValueByKey(ConsoleKey key)
     {
         if (FuncCommands == null)
-            throw new ArgumentNullException($"{FuncCommands} is null");
+            throw new ArgumentNullException($"{FuncCommands}");
         
         var action = FuncCommands.ContainsKey(key) ? FuncCommands[key] : null;
 

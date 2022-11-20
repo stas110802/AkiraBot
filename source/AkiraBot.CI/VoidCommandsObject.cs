@@ -4,6 +4,11 @@ namespace AkiraBot.CI;
 
 public abstract class VoidCommandsObject
 {
+    protected VoidCommandsObject()
+    {
+        InitVoidCommands();
+    }
+    
     public abstract void PrintCommands();
     
     public void ReadActionCommandKey()
@@ -16,12 +21,13 @@ public abstract class VoidCommandsObject
         }
     }
 
-    protected void InitVoidCommands(object target)
+    private void InitVoidCommands()
     {
-        if (target == null) throw new ArgumentNullException(nameof(target));
-        VoidCommands = CommandHelper.GetConsoleCommands<Action>(target, target.GetType());
+        var type = GetType();
+        if (this == null) throw new ArgumentNullException(type.Name);
+        VoidCommands = CommandHelper.GetConsoleCommands<Action>(this, type);
     }
-
+   
     private Dictionary<ConsoleKey, Action>? VoidCommands { get; set; }
 
     private void InvokeActionCommand(ConsoleKey key)
@@ -34,7 +40,7 @@ public abstract class VoidCommandsObject
     
     private void InvokeMethodByKey(ConsoleKey key)
     {
-        var action = VoidCommands.ContainsKey(key) ? VoidCommands[key] : null;
+        var action = VoidCommands!.ContainsKey(key) ? VoidCommands[key] : null;
         if (action == null) return;
         
         action.Invoke();
