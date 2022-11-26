@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yV5+1mjxP7ghr650S9yEahFzV0Qnxg2WzBDj33x+i7+4EqJZ1+K+/ghB03ZJpQ09IiU8gU5x2clnaTjb3Belhg==",
+  "dgSpecHash": "w/tPoi0RsFHRvqpsQK+FMExCeir+du3A67hvbbetgalylLxoK+h8lOWCl+qG6K+nZpJc+MJ6AlWtLxGLmkG4iw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.CI\\AkiraBot.CI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\SosiskaKiller\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta3\\newtonsoft.json.13.0.2-beta3.nupkg.sha512",
+    "C:\\Users\\SosiskaKiller\\.nuget\\packages\\restsharp\\109.0.0-preview.1\\restsharp.109.0.0-preview.1.nupkg.sha512"
+  ],
   "logs": []
 }

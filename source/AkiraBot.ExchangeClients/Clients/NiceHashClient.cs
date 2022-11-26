@@ -1,0 +1,142 @@
+using System.Collections;
+using System.Globalization;
+using AkiraBot.ExchangeClients.Models;
+using AkiraBot.ExchangeClients.Models.NiceHash;
+using AkiraBot.ExchangesRestAPI.API;
+using AkiraBot.ExchangesRestAPI.Options;
+using AkiraBot.ExchangesRestAPI.Types;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+
+namespace AkiraBot.ExchangeClients.Clients;
+
+public sealed class NiceHashClient : IExchangeClient
+{
+    private readonly NiceHashAPI _server;
+
+    public NiceHashClient(NiceHashOptions options)
+    {
+        // "https://api2.nicehash.com"
+        _server = new NiceHashAPI(options);
+    }
+    
+    public CurrencyPair GetCurrencyInfo(string currency)
+    {
+        var response = _server.GetResponseContent(Method.Get, NHEndpoint.CurrentPrices);
+        var deserialize = JsonConvert.DeserializeObject<JToken>(response);
+
+        foreach (var item in deserialize)//todo create method in base class BaseExchangeClient
+        {
+            if (currency != item.Path) continue;
+
+            var currencyPair = new CurrencyPair
+            {
+                Currency = currency
+            };
+
+            var isSuccessfully = decimal.TryParse(item.First.ToString(), out var price);
+
+            if (isSuccessfully == false)
+                throw new Exception("[Parse ERROR] : Cannot parse the selling price");
+
+            currencyPair.SellingPrice = price;
+
+            return currencyPair;
+        }
+
+        throw new ArgumentException("[Argument ERROR] : Cannot find the specified currency");
+    }
+
+    public decimal GetCurrencyPrice(string currency)
+    {
+        var result = GetCurrencyInfo(currency);
+
+        return result.SellingPrice;
+    }
+
+    public IEnumerable<CurrencyBalance> GetAccountBalance()
+    {
+        var response = _server.GetResponseContent(Method.Get, NHEndpoint.Balances, true);
+        var parse = JObject.Parse(response);
+        var currencies = parse.SelectToken("currencies");
+        
+        if (currencies == null)
+        {
+            throw new JsonException("[SelectToken ERROR] : Unable to deserialize response and get currencies");
+        }
+        
+        var result = JsonConvert.DeserializeObject<List<CurrencyBalance>>(currencies.ToString())
+            ?.FindAll(x => x.AvailableBalance > 0);
+       
+        result ??= new List<CurrencyBalance>();
+        
+        return result;
+    }
+
+    // todo replace to api method
+    public CurrencyBalance GetCurrencyBalance(string currency)
+    {
+        // get all the balance currency on the exchange
+        var allCurrencies = GetAccountBalance();
+        
+        // find a necessary currency
+        foreach (var item in allCurrencies)
+        {
+            if (item.Currency == currency)
+            {
+                return item;
+            }
+        }
+        
+        // if not found, returns an exception
+        throw new ArgumentException("[Argument ERROR] : Invalid currency name");
+    }
+
+    // todo fix this method
+    public bool CreateSellOrder(string currency, decimal amount, decimal price)
+    {
+        var strPrice = price.ToString(CultureInfo.InvariantCulture);
+        var strQuantity = amount.ToString(CultureInfo.InvariantCulture);
+        // create post url
+        var query = $"?market={currency}&side=SELL&type=LIMIT&quantity={strQuantity}&price={strPrice}";
+        // create an order and deserialize the received response
+        var response = _server.GetResponseContent(Method.Post, NHEndpoint.Order, true, query, true);
+        var deserialize = JsonConvert.DeserializeObject<JToken>(response);
+        // if the order id is not empty, we have created an order
+        return deserialize?["orderId"]?.ToString() != "";
+    }
+
+    public bool CreateSellOrder(string currency, decimal amount)
+    {
+        var strQuantity = amount.ToString(CultureInfo.InvariantCulture);
+        // create post url
+        var query = $"?market={currency}&side=SELL&type=MARKET&quantity={strQuantity}";
+        // create an order and deserialize the received response
+        var response = _server.GetResponseContent(Method.Post, NHEndpoint.Order, true, query, true);
+        var deserialize = JsonConvert.DeserializeObject<JToken>(response);
+        // if the order id is not empty, we have created an order
+        return deserialize?["orderId"]?.ToString() != "";
+    }
+
+    public void GetMyOrders()
+    {
+        throw new Exception("Method not init");
+        var query = $"?market=BTCUSDT";
+        var response = _server.GetResponseContent(Method.Get, NHEndpoint.MyOrders, true, query, true);
+        var deserialize = JsonConvert.DeserializeObject<JToken>(response);
+    }
+
+    public bool CancelAllOrders()
+    {
+        try
+        {
+            var response = _server.GetResponseContent(Method.Delete, NHEndpoint.CancelAllOrders, true, null, true);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+}

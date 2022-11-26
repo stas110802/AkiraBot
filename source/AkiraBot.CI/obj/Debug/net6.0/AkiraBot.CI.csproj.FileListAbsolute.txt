@@ -13,3 +13,12 @@ C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\refint\AkiraBot.CI.dll
 C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.pdb
 C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.genruntimeconfig.cache
 C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\ref\AkiraBot.CI.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\RestSharp.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangeClients.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangesRestAPI.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Utilities.EnumUtility.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangeClients.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangesRestAPI.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Utilities.EnumUtility.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.csproj.CopyComplete
