@@ -6,6 +6,7 @@ public sealed class NiceHashOptions : IApiOptions
 {
     public NiceHashOptions()
     {
+        BaseUri = "https://api2.nicehash.com";
         Encoding = Encoding.Default;
     }
     

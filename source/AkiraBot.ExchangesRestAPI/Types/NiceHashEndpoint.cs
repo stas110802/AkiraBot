@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace AkiraBot.ExchangesRestAPI.Types;
 
-public enum NHEndpoint
+public enum NiceHashEndpoint
 {
     [Description("/api/v2/time")] ServerTime,
     [Description("/main/api/v2/accounting/accounts2")] Balances,

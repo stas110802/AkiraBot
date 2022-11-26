@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace AkiraBot.ExchangeClients.Models.NiceHash;
+namespace AkiraBot.ExchangeClients.Models;
 
 public class CurrencyBalance 
 {

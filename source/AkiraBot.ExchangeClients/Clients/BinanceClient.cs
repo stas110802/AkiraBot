@@ -1,3 +1,4 @@
+using AkiraBot.ExchangeClients.Models;
 using AkiraBot.ExchangeClients.Models.NiceHash;
 
 namespace AkiraBot.ExchangeClients.Clients;

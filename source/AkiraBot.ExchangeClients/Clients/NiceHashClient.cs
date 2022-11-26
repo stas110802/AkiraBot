@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Globalization;
 using AkiraBot.ExchangeClients.Models;
 using AkiraBot.ExchangeClients.Models.NiceHash;
-using AkiraBot.ExchangesRestAPI.API;
+using AkiraBot.ExchangesRestAPI.Api;
 using AkiraBot.ExchangesRestAPI.Options;
 using AkiraBot.ExchangesRestAPI.Types;
 using Newtonsoft.Json;
@@ -13,17 +12,17 @@ namespace AkiraBot.ExchangeClients.Clients;
 
 public sealed class NiceHashClient : IExchangeClient
 {
-    private readonly NiceHashAPI _server;
+    private readonly CustomRestApi<NiceHashRequest> _server;
 
     public NiceHashClient(NiceHashOptions options)
     {
-        // "https://api2.nicehash.com"
-        _server = new NiceHashAPI(options);
+        _server = new CustomRestApi<NiceHashRequest>(options);
     }
     
     public CurrencyPair GetCurrencyInfo(string currency)
     {
-        var response = _server.GetResponseContent(Method.Get, NHEndpoint.CurrentPrices);
+        var response = _server.CreateRequest(Method.Get, NiceHashEndpoint.CurrentPrices)
+            .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
 
         foreach (var item in deserialize)//todo create method in base class BaseExchangeClient
@@ -57,7 +56,9 @@ public sealed class NiceHashClient : IExchangeClient
 
     public IEnumerable<CurrencyBalance> GetAccountBalance()
     {
-        var response = _server.GetResponseContent(Method.Get, NHEndpoint.Balances, true);
+        var response = _server.CreateRequest(Method.Get, NiceHashEndpoint.Balances)
+            .Authorize(false)
+            .Execute();
         var parse = JObject.Parse(response);
         var currencies = parse.SelectToken("currencies");
         
@@ -101,7 +102,9 @@ public sealed class NiceHashClient : IExchangeClient
         // create post url
         var query = $"?market={currency}&side=SELL&type=LIMIT&quantity={strQuantity}&price={strPrice}";
         // create an order and deserialize the received response
-        var response = _server.GetResponseContent(Method.Post, NHEndpoint.Order, true, query, true);
+        var response = _server.CreateRequest(Method.Post, NiceHashEndpoint.Order, query)
+            .Authorize(true)
+            .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
         // if the order id is not empty, we have created an order
         return deserialize?["orderId"]?.ToString() != "";
@@ -113,7 +116,9 @@ public sealed class NiceHashClient : IExchangeClient
         // create post url
         var query = $"?market={currency}&side=SELL&type=MARKET&quantity={strQuantity}";
         // create an order and deserialize the received response
-        var response = _server.GetResponseContent(Method.Post, NHEndpoint.Order, true, query, true);
+        var response = _server.CreateRequest(Method.Post, NiceHashEndpoint.Order, query)
+            .Authorize(true)
+            .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
         // if the order id is not empty, we have created an order
         return deserialize?["orderId"]?.ToString() != "";
@@ -123,7 +128,9 @@ public sealed class NiceHashClient : IExchangeClient
     {
         throw new Exception("Method not init");
         var query = $"?market=BTCUSDT";
-        var response = _server.GetResponseContent(Method.Get, NHEndpoint.MyOrders, true, query, true);
+        var response = _server.CreateRequest(Method.Get, NiceHashEndpoint.MyOrders, query)
+            .Authorize(true)
+            .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
     }
 
@@ -131,7 +138,9 @@ public sealed class NiceHashClient : IExchangeClient
     {
         try
         {
-            var response = _server.GetResponseContent(Method.Delete, NHEndpoint.CancelAllOrders, true, null, true);
+            var response = _server.CreateRequest(Method.Delete, NiceHashEndpoint.CancelAllOrders)
+                .Authorize(true)
+                .Execute();
             return true;
         }
         catch (Exception)

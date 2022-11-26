@@ -1,0 +1,35 @@
+using AkiraBot.ExchangesRestAPI.Models;
+using AkiraBot.ExchangesRestAPI.Utilities;
+using RestSharp;
+
+namespace AkiraBot.ExchangesRestAPI.Api;
+
+public class BinanceRequest : BaseRequest
+{
+    public override BaseRequest Authorize(bool isRequestId)
+    {
+        var query = GetQuery(FullPath);
+        if (string.IsNullOrEmpty(query))
+            throw new NullReferenceException("required query parameters cant be nullable");
+        
+        var signature = HashCalculator.CalculateHMACSHA256Hash(query, Options.SecretKey);
+        FullPath += $"&signature={signature}";
+        Request = new RestRequest(FullPath);
+        Request.AddHeader("X-MBX-APIKEY", Options.PublicKey);
+        
+        return this;
+    }
+
+    public override BaseRequest WithPayload(string payload)
+    {
+        throw new NotImplementedException();
+    }
+    
+    
+    private static string? GetQuery(string url)
+    {
+        var arrSplit = url.Split('?');
+
+        return arrSplit.Length == 1 ? null : arrSplit[1];
+    }
+}

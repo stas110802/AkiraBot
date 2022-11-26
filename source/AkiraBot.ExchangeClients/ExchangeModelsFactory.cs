@@ -1,4 +1,4 @@
-using AkiraBot.ExchangeClients.Models.NiceHash;
+using AkiraBot.ExchangeClients.Models;
 
 namespace AkiraBot.ExchangeClients;
 
