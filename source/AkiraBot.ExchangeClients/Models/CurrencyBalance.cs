@@ -2,7 +2,8 @@ using Newtonsoft.Json;
 
 namespace AkiraBot.ExchangeClients.Models;
 
-public class CurrencyBalance 
+[JsonConverter(typeof(MultipleJsonConverter<CurrencyBalance>))]
+public class CurrencyBalance
 {
     [JsonProperty("active")]
     public bool IsActive { get; set; }

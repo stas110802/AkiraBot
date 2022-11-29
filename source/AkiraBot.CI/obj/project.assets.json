@@ -131,8 +131,8 @@
     },
     "AkiraBot.Utilities.EnumUtility/1.0.0": {
       "type": "project",
-      "path": "../../AkiraBot.Utilities.EnumUtility/AkiraBot.Utilities.EnumUtility.csproj",
-      "msbuildProject": "../../AkiraBot.Utilities.EnumUtility/AkiraBot.Utilities.EnumUtility.csproj"
+      "path": "../AkiraBot.Utilities.EnumUtility/AkiraBot.Utilities.EnumUtility.csproj",
+      "msbuildProject": "../AkiraBot.Utilities.EnumUtility/AkiraBot.Utilities.EnumUtility.csproj"
     }
   },
   "projectFileDependencyGroups": {

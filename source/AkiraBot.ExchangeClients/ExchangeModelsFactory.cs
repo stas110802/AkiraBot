@@ -20,12 +20,10 @@ public static class ExchangeModelsFactory
     {// todo fix this code
         var result = new Dictionary<string, string>
         {
-            {"binanceExmp", "active"},
-            {"binanceExmp", "currency"},
-            {"binanceExmp", "totalBalance"}
+            {"asset", "currency"},
+            {"free", "available"}
         };
-        
-        
+
         return result;
     }
 }

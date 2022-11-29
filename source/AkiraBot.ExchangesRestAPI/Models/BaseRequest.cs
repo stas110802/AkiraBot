@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using AkiraBot.ExchangesRestAPI.Options;
 using RestSharp;
+using static System.String;
 
 namespace AkiraBot.ExchangesRestAPI.Models;
 
@@ -12,14 +13,16 @@ public abstract class BaseRequest
     [Required] public string FullPath { get; set; }
     public string? Payload { get; set; }
     [Required] public IApiOptions Options { get; set; }
-
-    // сделать делегату с доп реализацией логики, если она необходима
-    public abstract BaseRequest Authorize(bool isRequestId);
+    
+    public abstract BaseRequest Authorize(bool isAdditionalLogic = false);
 
     public abstract BaseRequest WithPayload(string payload);
 
-    public virtual string? Execute()
+    public virtual string Execute()
     {
-        return Client.Execute(Request, Request.Method).Content;
+        var result = Client.Execute(Request, Request.Method).Content;
+        if (IsNullOrEmpty(result)) throw new Exception("[REST-API] Request fetch error.");
+        
+        return result;
     }
 }

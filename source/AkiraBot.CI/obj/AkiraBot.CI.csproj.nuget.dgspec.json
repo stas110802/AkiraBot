@@ -4,59 +4,6 @@
     "C:\\Projects\\AkiraBot\\source\\AkiraBot.CI\\AkiraBot.CI.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj",
-        "projectName": "AkiraBot.Utilities.EnumUtility",
-        "projectPath": "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj",
-        "packagesPath": "C:\\Users\\SosiskaKiller\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\SosiskaKiller\\AppData\\Roaming\\NuGet\\NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Users\\SosiskaKiller\\.dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "C:\\Projects\\AkiraBot\\source\\AkiraBot.CI\\AkiraBot.CI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -193,8 +140,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj": {
-                "projectPath": "C:\\Projects\\AkiraBot\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj"
+              "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj": {
+                "projectPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj"
               }
             }
           }
@@ -218,6 +165,59 @@
               "version": "[109.0.0-preview.1, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\SosiskaKiller\\.dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj",
+        "projectName": "AkiraBot.Utilities.EnumUtility",
+        "projectPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\AkiraBot.Utilities.EnumUtility.csproj",
+        "packagesPath": "C:\\Users\\SosiskaKiller\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.EnumUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SosiskaKiller\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",

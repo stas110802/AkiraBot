@@ -1,2 +1,1 @@
-﻿//var cmdController = new MainCommandsController();
-//cmdController.StartReadCommands();
+﻿Console.WriteLine();

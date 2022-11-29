@@ -6,7 +6,7 @@ namespace AkiraBot.ExchangesRestAPI.Api;
 
 public class BinanceRequest : BaseRequest
 {
-    public override BaseRequest Authorize(bool isRequestId)
+    public override BaseRequest Authorize(bool isAdditionalLogic = false)
     {
         var query = GetQuery(FullPath);
         if (string.IsNullOrEmpty(query))

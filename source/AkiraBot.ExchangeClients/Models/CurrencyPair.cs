@@ -1,4 +1,4 @@
-namespace AkiraBot.ExchangeClients.Models.NiceHash;
+namespace AkiraBot.ExchangeClients.Models;
 
 public class CurrencyPair
 {

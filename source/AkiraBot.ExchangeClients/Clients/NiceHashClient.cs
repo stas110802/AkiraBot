@@ -1,6 +1,5 @@
 using System.Globalization;
 using AkiraBot.ExchangeClients.Models;
-using AkiraBot.ExchangeClients.Models.NiceHash;
 using AkiraBot.ExchangesRestAPI.Api;
 using AkiraBot.ExchangesRestAPI.Options;
 using AkiraBot.ExchangesRestAPI.Types;

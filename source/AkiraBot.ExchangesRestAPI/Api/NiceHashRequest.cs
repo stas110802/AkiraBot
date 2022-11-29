@@ -12,7 +12,7 @@ namespace AkiraBot.ExchangesRestAPI.Api;
 
 public class NiceHashRequest : BaseRequest
 {
-    public override NiceHashRequest Authorize(bool isRequestId)
+    public override NiceHashRequest Authorize(bool isAdditionalLogic = false)
     {
         var orgId = ChildOptions.OrganizationId;
         var time = GetServerTimestamp();
@@ -21,7 +21,7 @@ public class NiceHashRequest : BaseRequest
             
         var digest = HashBySegments(time, nonce, orgId, strMethod, EndpointValue, GetQuery(FullPath), Payload);
 
-        if (isRequestId)
+        if (isAdditionalLogic)
         {
             Request.AddHeader("X-Request-Id", nonce);
         }
