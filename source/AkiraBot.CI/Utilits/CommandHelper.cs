@@ -4,7 +4,6 @@ namespace AkiraBot.CI.Utilits;
 
 public static class CommandHelper
 {
-    
     /// <summary>
     /// Return all methods with "ConsoleCommand" attribute 
     /// </summary>

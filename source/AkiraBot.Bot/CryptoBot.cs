@@ -1,0 +1,128 @@
+using AkiraBot.Bot.Logs;
+using AkiraBot.Bot.Models.Configs;
+using AkiraBot.Bot.Models.Logs;
+using AkiraBot.ExchangeClients;
+using AkiraBot.ExchangeClients.Models;
+using AkiraBot.Utilities.CommonTools;
+
+namespace AkiraBot.Bot;
+
+public sealed class CryptoBot
+{
+    private readonly IExchangeClient _client;
+    private readonly BotLogger _botLogger;
+    private readonly CurrencyInfo _currencyInfo;
+    
+    public CryptoBot(IExchangeClient client, CurrencyInfo currencyInfo)
+    {
+        _client = client;
+        _currencyInfo = currencyInfo;
+        _botLogger = new BotLogger
+        {
+            RecipientsEmails = ConfigInitializer.GetRecipientMails(),
+            SmtpSender = new SmtpSender(ConfigInitializer.GetSmtpEmailConfig())
+        };
+    }
+
+    /// <summary>
+    /// Starts parsing prices from the exchange
+    /// and sells coins if the price has reached the required limit
+    /// </summary>
+    public void StartBot()
+    {
+        Console.Clear();
+        ConsoleHelper.BeautifyWrite("Запуск бота", 1);
+        var currency = _currencyInfo.FirstCoin + _currencyInfo.SecondCoin;
+        Thread.Sleep(2000);
+        
+        try
+        {
+            var launchLog = GetTotalCurrencyInfo(currency);
+            _botLogger.AddLog(launchLog);
+            Thread.Sleep(2000);
+            
+            while (true)
+            {
+                var balance = _client.GetAccountBalance()
+                    .First(x => x.Currency == _currencyInfo.FirstCoin);
+                
+                var parseLog = GetTotalCurrencyInfo(currency, balance);
+                Console.WriteLine(parseLog);
+                
+                var currentPrice = parseLog.TotalPrice;
+                if (currentPrice <= _currencyInfo.UpperPrice &&
+                    currentPrice >= _currencyInfo.BottomPrice)
+                {
+                    ConsoleHelper.LoadingBar(10);
+                    continue;
+                }
+                
+                // if the balance is not active, then do not create an order
+                if (balance!.IsActive is false)
+                {
+                    WriteErrorLog("Заброкированнный баланс!");
+                    continue;
+                }
+
+                var amount = balance.AvailableBalance;
+                if (amount < _currencyInfo.BalanceLimit)
+                {
+                    ConsoleHelper.LoadingBar(10);
+                    continue;
+                }
+
+                // create sell order
+                var orderResult = _client.CreateSellOrder(currency, amount);// MARKET ORDER
+                if (orderResult)
+                {
+                    var orderLog = new OrderLog(
+                    options: _currencyInfo, sellPrice: currentPrice, amount: amount);
+
+                    _botLogger.AddLog(orderLog);
+                    ConsoleHelper.LoadingBar(15, "sell coins");
+                }
+                else
+                {
+                    WriteErrorLog(
+                        $"Неудачная попытка разместить ордер на продажу {_currencyInfo.FirstCoin}-{_currencyInfo.SecondCoin}");
+                }
+            }
+        }
+        catch (Exception error)
+        {
+            RestartBot(error.Message);
+        }
+    }
+    
+    private CurrencyLog GetTotalCurrencyInfo(string currency, CurrencyBalance? balance = null)
+    {
+        Console.Clear();
+        var price = _client.GetCurrencyPrice(currency); 
+        balance ??= _client
+            .GetAccountBalance()
+            .First(x => x.Currency == _currencyInfo.FirstCoin);
+        var log = new CurrencyLog(_currencyInfo, price, balance.AvailableBalance);
+
+        return log;
+    }
+    
+    private void WriteErrorLog(string message)
+    {
+        var errorLog = new ErrorLog(message);
+        _botLogger.AddLog(errorLog);
+        Console.WriteLine(errorLog);
+    }
+    
+    private void RestartBot(string? error = null)
+    {
+        Console.Clear();
+        
+        if(string.IsNullOrEmpty(error) is false)
+            WriteErrorLog($"Сбой работы бота. {error}");
+        
+        ConsoleHelper.LoadingBar(30, "restart application", 1, 3);
+        Console.Clear();
+        
+        StartBot();
+    }
+}

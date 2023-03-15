@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.ExchangeClients", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.Utilities.EnumUtility", "source\AkiraBot.Utilities.EnumUtility\AkiraBot.Utilities.EnumUtility.csproj", "{E904CB25-B212-452D-8F5C-6EB2AE8946B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.Bot", "source\AkiraBot.Bot\AkiraBot.Bot.csproj", "{AB88B45B-BB21-4486-AAD5-BAC0C3A75722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.Utilities.CommonTools", "source\AkiraBot.Utilities.CommonTools\AkiraBot.Utilities.CommonTools.csproj", "{0A1710CA-0078-4EC7-B127-DB738AA48FD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{E904CB25-B212-452D-8F5C-6EB2AE8946B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E904CB25-B212-452D-8F5C-6EB2AE8946B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E904CB25-B212-452D-8F5C-6EB2AE8946B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB88B45B-BB21-4486-AAD5-BAC0C3A75722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB88B45B-BB21-4486-AAD5-BAC0C3A75722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB88B45B-BB21-4486-AAD5-BAC0C3A75722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB88B45B-BB21-4486-AAD5-BAC0C3A75722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
