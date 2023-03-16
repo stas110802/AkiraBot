@@ -16,7 +16,7 @@ public static class ConfigInitializer
     public static BotKeys? GetClientConfig()
     {
         return Config?.Client;
-    }
+     }
 
     public static SmtpHost? GetSmtpEmailConfig()
     {

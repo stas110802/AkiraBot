@@ -31,7 +31,7 @@ public sealed class CurrencyLog : ILog
     [DataMember]
     public DateTime ParsingDate { get; set; }
 
-    public string FilePath => $"{PathHelper.PathList.LaunchesPath}{DateTime.Now:dd/MM/yyyy}.json";
+    public string FilePath => $"{PathHelper.PathList.LaunchesPath}{DateTime.Now:dd.MM.yyyy}.json";
     
     public SubjectTheme? Theme { get; init; }
 

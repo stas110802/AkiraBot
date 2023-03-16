@@ -101,7 +101,7 @@ public sealed class MainCommands : VoidCommandsObject
 
         Console.Write($"Минимальный баланс({sellCoin}): ");
         var balanceRes = decimal.TryParse(
-            Console.ReadLine()?.Replace('.', ','), out var balanceLimit);
+            Console.ReadLine(), out var balanceLimit);
 
         if (upperRes is false ||
             bottomRes is false ||

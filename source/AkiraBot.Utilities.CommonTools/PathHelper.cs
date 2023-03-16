@@ -7,11 +7,6 @@ public static class PathHelper
     static PathHelper()
     {
         PathList = new PathList();
-        
-        // Check what will be done first 
-        
-        //var paths = AttributesHelperExtension.GetStringValues(PathList);
-        //CheckForPathExists(paths);
     }
     
     /// <summary>

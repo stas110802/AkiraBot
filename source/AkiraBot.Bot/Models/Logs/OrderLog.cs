@@ -41,6 +41,6 @@ public sealed class OrderLog : ILog
                $"Количество: {Amount} {Info.FirstCoin}";
     }
     
-    public string FilePath => $"{PathHelper.PathList.OrderPath}{DateTime.Now:dd/MM/yyyy}.json";
+    public string FilePath => $"{PathHelper.PathList.OrderPath}{DateTime.Now:dd.MM.yyyy}.json";
     public SubjectTheme? Theme { get; init; }
 }
