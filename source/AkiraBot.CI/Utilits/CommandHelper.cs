@@ -21,9 +21,12 @@ public static class CommandHelper
         {
             if (Attribute.GetCustomAttributes(method, typeof(ConsoleCommandAttribute)).FirstOrDefault() is not ConsoleCommandAttribute attr)
                 continue;
-
-            var action = (T) Delegate.CreateDelegate(typeof(T), target, method);
-            result.Add(attr.Key, action);
+            try
+            {
+                var action = (T) Delegate.CreateDelegate(typeof(T), target, method);
+                result.Add(attr.Key, action);
+            }
+            catch (Exception) { }
         }
         
         return result;

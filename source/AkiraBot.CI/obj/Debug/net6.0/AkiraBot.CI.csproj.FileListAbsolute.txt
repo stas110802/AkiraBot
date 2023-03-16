@@ -22,3 +22,7 @@ C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangeClient
 C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.ExchangesRestAPI.pdb
 C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Utilities.EnumUtility.pdb
 C:\Projects\AkiraBot\source\AkiraBot.CI\obj\Debug\net6.0\AkiraBot.CI.csproj.CopyComplete
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Bot.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Utilities.CommonTools.dll
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Bot.pdb
+C:\Projects\AkiraBot\source\AkiraBot.CI\bin\Debug\net6.0\AkiraBot.Utilities.CommonTools.pdb

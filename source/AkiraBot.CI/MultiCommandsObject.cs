@@ -5,6 +5,11 @@ namespace AkiraBot.CI;
 public abstract class MultiCommandsObject<TResult> : VoidCommandsObject
     where TResult : class
 {
+    protected MultiCommandsObject()
+    {
+        
+    }
+    
     public TResult? ReadFuncCommandKey()
     {
         var key = new ConsoleKey();

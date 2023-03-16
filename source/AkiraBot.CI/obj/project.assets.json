@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Newtonsoft.Json/13.0.2-beta3": {
+      "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -26,6 +26,20 @@
           "lib/net6.0/RestSharp.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "AkiraBot.Bot/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AkiraBot.ExchangeClients": "1.0.0",
+          "AkiraBot.Utilities.CommonTools": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AkiraBot.Bot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AkiraBot.Bot.dll": {}
         }
       },
       "AkiraBot.ExchangeClients/1.0.0": {
@@ -56,6 +70,19 @@
           "bin/placeholder/AkiraBot.ExchangesRestAPI.dll": {}
         }
       },
+      "AkiraBot.Utilities.CommonTools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/AkiraBot.Utilities.CommonTools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AkiraBot.Utilities.CommonTools.dll": {}
+        }
+      },
       "AkiraBot.Utilities.EnumUtility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -69,10 +96,10 @@
     }
   },
   "libraries": {
-    "Newtonsoft.Json/13.0.2-beta3": {
-      "sha512": "HyxAbMCBdNVrOASMvpBaGY4FzyxaIAqVKfr96ByQti7qtw6bdsQThpwHFhkzaPIq8g+sAk1ueUsDFZ2VTsSebA==",
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.2-beta3",
+      "path": "newtonsoft.json/13.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -94,7 +121,7 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.2-beta3.nupkg.sha512",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -119,6 +146,11 @@
         "restsharp.png"
       ]
     },
+    "AkiraBot.Bot/1.0.0": {
+      "type": "project",
+      "path": "../AkiraBot.Bot/AkiraBot.Bot.csproj",
+      "msbuildProject": "../AkiraBot.Bot/AkiraBot.Bot.csproj"
+    },
     "AkiraBot.ExchangeClients/1.0.0": {
       "type": "project",
       "path": "../AkiraBot.ExchangeClients/AkiraBot.ExchangeClients.csproj",
@@ -129,6 +161,11 @@
       "path": "../AkiraBot.ExchangesRestAPI/AkiraBot.ExchangesRestAPI.csproj",
       "msbuildProject": "../AkiraBot.ExchangesRestAPI/AkiraBot.ExchangesRestAPI.csproj"
     },
+    "AkiraBot.Utilities.CommonTools/1.0.0": {
+      "type": "project",
+      "path": "../AkiraBot.Utilities.CommonTools/AkiraBot.Utilities.CommonTools.csproj",
+      "msbuildProject": "../AkiraBot.Utilities.CommonTools/AkiraBot.Utilities.CommonTools.csproj"
+    },
     "AkiraBot.Utilities.EnumUtility/1.0.0": {
       "type": "project",
       "path": "../AkiraBot.Utilities.EnumUtility/AkiraBot.Utilities.EnumUtility.csproj",
@@ -137,7 +174,9 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "AkiraBot.ExchangeClients >= 1.0.0"
+      "AkiraBot.Bot >= 1.0.0",
+      "AkiraBot.ExchangeClients >= 1.0.0",
+      "AkiraBot.Utilities.CommonTools >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -165,8 +204,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Projects\\AkiraBot\\source\\AkiraBot.Bot\\AkiraBot.Bot.csproj": {
+              "projectPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Bot\\AkiraBot.Bot.csproj"
+            },
             "C:\\Projects\\AkiraBot\\source\\AkiraBot.ExchangeClients\\AkiraBot.ExchangeClients.csproj": {
               "projectPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.ExchangeClients\\AkiraBot.ExchangeClients.csproj"
+            },
+            "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.CommonTools\\AkiraBot.Utilities.CommonTools.csproj": {
+              "projectPath": "C:\\Projects\\AkiraBot\\source\\AkiraBot.Utilities.CommonTools\\AkiraBot.Utilities.CommonTools.csproj"
             }
           }
         }

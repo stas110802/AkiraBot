@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AkiraBot.Bot\AkiraBot.Bot.csproj" />
       <ProjectReference Include="..\AkiraBot.ExchangeClients\AkiraBot.ExchangeClients.csproj" />
+      <ProjectReference Include="..\AkiraBot.Utilities.CommonTools\AkiraBot.Utilities.CommonTools.csproj" />
     </ItemGroup>
 
 </Project>
