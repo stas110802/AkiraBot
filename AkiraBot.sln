@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.Bot", "source\Akir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.Utilities.CommonTools", "source\AkiraBot.Utilities.CommonTools\AkiraBot.Utilities.CommonTools.csproj", "{0A1710CA-0078-4EC7-B127-DB738AA48FD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkiraBot.UI", "source\AkiraBot.UI\AkiraBot.UI.csproj", "{8EE1A2EC-9780-4F72-824A-40B1D270C882}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1710CA-0078-4EC7-B127-DB738AA48FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE1A2EC-9780-4F72-824A-40B1D270C882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE1A2EC-9780-4F72-824A-40B1D270C882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE1A2EC-9780-4F72-824A-40B1D270C882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE1A2EC-9780-4F72-824A-40B1D270C882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
