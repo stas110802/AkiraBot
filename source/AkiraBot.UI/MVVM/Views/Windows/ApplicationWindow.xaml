@@ -26,6 +26,10 @@
         <DataTemplate DataType="{x:Type viewModel:AvailableExchangesVM}">
             <uc:AvailableExchangesUC/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModel:GuardCoinVM}">
+            <uc:GuardCoinUC/>
+        </DataTemplate>
     </Window.Resources>
     
     <Border CornerRadius="10"                    
@@ -128,6 +132,7 @@
                         
                         <!-- 6 - Coins Guard -->
                         <RadioButton Style="{StaticResource menuButton}"
+                                     Command="{Binding  GuardCoinCommand}"
                                      Tag="{StaticResource color1}"> 
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="Bots" Style="{StaticResource menuButtonIcon}"/>
