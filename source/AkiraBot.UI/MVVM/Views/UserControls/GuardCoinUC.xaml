@@ -8,6 +8,7 @@
              xmlns:viewModel="clr-namespace:AkiraBot.UI.MVVM.ViewModels.UserControls"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewModel:GuardCoinVM}"
              d:DesignHeight="550" d:DesignWidth="800">
  <Grid>
      <TextBlock Text="Parameters for guard coin"
@@ -21,7 +22,7 @@
                 Foreground="{StaticResource titleColor1}">
          <fa:IconImage Width="15"
                        Height="15"
-                       Foreground="{StaticResource color1}"
+                       Foreground="{StaticResource titleColor1}"
                        Icon="Question">
              <fa:IconImage.ToolTip>
                  <ToolTip Background="Transparent"
@@ -68,6 +69,7 @@
             <StackPanel Orientation="Vertical" Height="31">
                 <TextBox Width="200" 
                          Height="30"
+                         Text="{Binding FirstCoin}"
                          FontSize="20"
                          Background="Transparent" 
                          Foreground="{StaticResource titleColor2}"
@@ -86,6 +88,7 @@
             <StackPanel Orientation="Vertical" Height="31">
                 <TextBox Width="200" 
                          Height="30"
+                         Text="{Binding SecondCoin}"
                          FontSize="20"
                          Background="Transparent" 
                          Foreground="{StaticResource titleColor2}"
@@ -104,6 +107,7 @@
                  <StackPanel Orientation="Vertical" Height="31">
                  <TextBox Width="200" 
                           Height="30"
+                          Text="{Binding UpperPrice}"
                           FontSize="20"
                           Background="Transparent" 
                           Foreground="{StaticResource titleColor2}"
@@ -112,6 +116,7 @@
              </StackPanel>
              <fa:IconImage Width="20"
                            Height="20"
+                           Foreground="{StaticResource titleColor1}"
                            Icon="CircleQuestion">
                  <fa:IconImage.ToolTip>
                      <ToolTip Background="Transparent"
@@ -139,6 +144,7 @@
              <StackPanel Orientation="Vertical" Height="31">
                  <TextBox Width="200" 
                           Height="30"
+                          Text="{Binding BottomPrice}"
                           FontSize="20"
                           Background="Transparent" 
                           Foreground="{StaticResource titleColor2}"
@@ -147,6 +153,7 @@
              </StackPanel>
              <fa:IconImage Width="20"
                            Height="20"
+                           Foreground="{StaticResource titleColor1}"
                            Icon="CircleQuestion">
                  <fa:IconImage.ToolTip>
                      <ToolTip Background="Transparent"
@@ -168,6 +175,7 @@
          
          <Button Content="START" 
                  HorizontalAlignment="Left"
+                 Command="{Binding StartBotCommand}"
                  Style="{StaticResource defButton}"
                  Margin="50 30 0 0"/>
          
