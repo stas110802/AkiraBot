@@ -1,0 +1,228 @@
+<UserControl x:Class="AkiraBot.UI.MVVM.Views.UserControls.ArbitrageBotUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AkiraBot.UI.MVVM.Views.UserControls"
+             xmlns:models="clr-namespace:AkiraBot.UI.MVVM.Models"
+             xmlns:viewModel="clr-namespace:AkiraBot.UI.MVVM.ViewModels.UserControls"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d"
+             d:DesignHeight="550" d:DesignWidth="800">
+    <Grid>
+        <TextBlock Text="Parameters for arbitrage bot"
+                FontSize="18"
+                Width="250"
+                Height="30"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                FontFamily="Montserrat"
+                Margin="30 0 0 0"
+                Foreground="{StaticResource titleColor1}">
+         <fa:IconImage Width="15"
+                       Height="15"
+                       Foreground="{StaticResource titleColor1}"
+                       Icon="Question">
+             <fa:IconImage.ToolTip>
+                 <ToolTip Background="Transparent"
+                          BorderThickness="0">
+                     <TextBlock Background="Transparent"
+                                FontSize="15"
+                                Foreground="{StaticResource titleColor1}"
+                                FontFamily="Monserrat">
+                         <Run Text="Параметры для работы бота."/> 
+                         <LineBreak/>
+                         <Run Text="Данный бот продаем монеты, если они слишком сильно вырастают в цене,"/> 
+                         <LineBreak/>
+                         <Run Text="либо же наоборот, если они слишком сильно обесцениваются, но последнию функцию можно убрать."/> 
+                     </TextBlock>
+                 </ToolTip>
+             </fa:IconImage.ToolTip>
+         </fa:IconImage>
+     </TextBlock>
+     
+         <Border Name="mask" 
+                 Background="{StaticResource panelOverColor}" 
+                 CornerRadius="5"  
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 Margin="15 35 0 0"
+                 Width="500" 
+                 Height="450"/>
+
+     <StackPanel Orientation="Vertical" 
+                 Background="Transparent"
+                 Width="500" 
+                 Height="450"
+                 Margin="35 35 0 0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top">
+         <!-- Coin for sale parameter -->
+         <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin for sale: " Height="30" 
+                       FontSize="22" Width="150" 
+                       FontFamily="Montserrat"
+                       Margin="0 15 0 0"
+                       Foreground="{StaticResource titleColor3}"/>
+            
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBox Width="200" 
+                         Height="30"
+                         Text="{Binding FirstCoin}"
+                         FontSize="20"
+                         Background="Transparent" 
+                         Foreground="{StaticResource titleColor2}"
+                         BorderThickness="0 0 0 1"
+                         BorderBrush="DarkGray"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- Coin to buy parameter --> 
+        <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin to buy: " Height="30" 
+                       FontSize="22" Width="150" 
+                       FontFamily="Montserrat"
+                       Margin="0 15 0 0"
+                       Foreground="{StaticResource titleColor3}"/>
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBox Width="200" 
+                         Height="30"
+                         Text="{Binding SecondCoin}"
+                         FontSize="20"
+                         Background="Transparent" 
+                         Foreground="{StaticResource titleColor2}"
+                         BorderThickness="0 0 0 1"
+                         BorderBrush="DarkGray"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- UPPER PRICE -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="Amount: " Height="30" 
+                        FontSize="22" Width="150" 
+                        FontFamily="Montserrat"
+                        Margin="0 15 0 0"
+                        Foreground="{StaticResource titleColor3}"/>
+                 <StackPanel Orientation="Vertical" Height="31">
+                 <TextBox Width="200" 
+                          Height="30"
+                          Text="{Binding UpperPrice}"
+                          FontSize="20"
+                          Background="Transparent" 
+                          Foreground="{StaticResource titleColor2}"
+                          BorderThickness="0 0 0 1"
+                          BorderBrush="DarkGray"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- CANDLE TYPE -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="Candle type: " Height="30" 
+                        FontSize="22" Width="150" 
+                        FontFamily="Montserrat"
+                        Margin="0 15 0 0"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <ComboBox Height="30" 
+                           Width="200" 
+                           FontSize="18"
+                           FontFamily="Monserrat"
+                           Foreground="{StaticResource titleColor2}"
+                           Background="{StaticResource panelActiveColor}"
+                           Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
+                     <ComboBox.ItemContainerStyle>
+                         <Style TargetType="ComboBoxItem">
+                             <Setter Property="Background" Value="{StaticResource panelActiveColor}"/>
+                             <Setter Property="BorderBrush" Value="Transparent"/>
+                         </Style>
+                     </ComboBox.ItemContainerStyle>
+                     <ComboBoxItem Content="15 min" BorderThickness="0"/>
+                     <ComboBoxItem Content="30 min" BorderThickness="0"/>
+                 </ComboBox>
+             </StackPanel>
+             <fa:IconImage Width="20"
+                           Height="20"
+                           Foreground="{StaticResource titleColor1}"
+                           Icon="CircleQuestion">
+                 <fa:IconImage.ToolTip>
+                     <ToolTip Background="Transparent"
+                              BorderThickness="0">
+                         <TextBlock Background="Transparent"
+                                    FontSize="15"
+                                    Foreground="{StaticResource titleColor1}"
+                                    FontFamily="Monserrat">
+                             <Run Text="Можно не указывать параметр, если эта функция не нужна."/> 
+                             <LineBreak/>
+                             <Run Text="Критическая(нижняя) цена продажи монеты."/> 
+                             <LineBreak/>
+                             <Run Text="Если монета упадет до указанной цены, то она будем продана."/> 
+                         </TextBlock>
+                     </ToolTip>
+                 </fa:IconImage.ToolTip>
+             </fa:IconImage>
+         </StackPanel> 
+         
+         <!-- EX #1 -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="1 Exchange: " Height="30" 
+                        FontSize="22" Width="150" 
+                        FontFamily="Montserrat"
+                        Margin="0 15 0 0"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <ComboBox Height="30" 
+                           Width="200" 
+                           FontSize="18"
+                           FontFamily="Monserrat"
+                           Foreground="{StaticResource titleColor2}"
+                           Background="{StaticResource panelActiveColor}"
+                           Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
+                     <ComboBox.ItemContainerStyle>
+                         <Style TargetType="ComboBoxItem">
+                             <Setter Property="Background" Value="{StaticResource panelActiveColor}"/>
+                             <Setter Property="BorderBrush" Value="Transparent"/>
+                         </Style>
+                     </ComboBox.ItemContainerStyle>
+                     <ComboBoxItem Content="Binance" BorderThickness="0"/>
+                     <ComboBoxItem Content="NiceHash" BorderThickness="0"/>
+                 </ComboBox>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- EX #2 -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="2 Exchange: " Height="30" 
+                        FontSize="22" Width="150" 
+                        FontFamily="Montserrat"
+                        Margin="0 15 0 0"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <ComboBox Height="30" 
+                           Width="200" 
+                           FontSize="18"
+                           FontFamily="Monserrat"
+                           Foreground="{StaticResource titleColor2}"
+                           Background="{StaticResource panelActiveColor}"
+                           Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
+                     <ComboBox.ItemContainerStyle>
+                         <Style TargetType="ComboBoxItem">
+                             <Setter Property="Background" Value="{StaticResource panelActiveColor}"/>
+                             <Setter Property="BorderBrush" Value="Transparent"/>
+                         </Style>
+                     </ComboBox.ItemContainerStyle>
+                     <ComboBoxItem Content="Binance" BorderThickness="0"/>
+                     <ComboBoxItem Content="NiceHash" BorderThickness="0"/>
+                 </ComboBox>
+             </StackPanel>
+         </StackPanel>
+         
+         <Button Content="START" 
+                 HorizontalAlignment="Left"
+                 Command="{Binding StartBotCommand}"
+                 Style="{StaticResource defButton}"
+                 Margin="50 30 0 0"/>
+         
+     </StackPanel>
+    </Grid>
+</UserControl>

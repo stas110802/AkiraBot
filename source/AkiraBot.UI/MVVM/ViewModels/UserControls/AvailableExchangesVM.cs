@@ -21,15 +21,9 @@ public class AvailableExchangesVM : ObservableObject
             },
             new()
             {
-                Name = "KuCoin",
+                Name = "NiceHash",
                 Description = "Best crypto trading exchange...",
-                ImagePath = "Z:\\ProgrammingWorld\\Projects\\C#\\BotAlphaUI\\Images\\binance.png"
-            },
-            new()
-            {
-                Name = "Akira production",
-                Description = "Best crypto trading exchange...",
-                ImagePath = "Z:\\ProgrammingWorld\\Projects\\C#\\BotAlphaUI\\Images\\binance.png"
+                ImagePath = "C:\\Projects\\AkiraBot\\source\\AkiraBot.UI\\Images\\niceHash.jpg"
             }
         };
     }

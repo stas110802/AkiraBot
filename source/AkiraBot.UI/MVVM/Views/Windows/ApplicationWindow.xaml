@@ -30,6 +30,10 @@
         <DataTemplate DataType="{x:Type viewModel:GuardCoinVM}">
             <uc:GuardCoinUC/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModel:ArbitrageBotVM}">
+            <uc:ArbitrageBotUC/>
+        </DataTemplate>
     </Window.Resources>
     
     <Border CornerRadius="10"                    
@@ -123,6 +127,7 @@
                         
                         <!-- 5 - Arbitrage -->
                         <RadioButton Style="{StaticResource menuButton}"
+                                     Command="{Binding ArbitrageBotCommand}"
                                      Tag="{StaticResource color1}"> 
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="Bots" Style="{StaticResource menuButtonIcon}"/>

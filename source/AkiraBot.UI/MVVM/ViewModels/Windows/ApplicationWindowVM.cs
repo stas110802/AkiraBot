@@ -30,7 +30,7 @@ public class ApplicationWindowVM : ObservableObject
     public BaseCommand AvailableExchangesCommand { get;  set; }
     public BaseCommand HomeViewCommand { get; set; }
     public BaseCommand GuardCoinCommand { get; set; }
-    
+    public BaseCommand ArbitrageBotCommand { get; set; }
 
     private void OpenAvailableExchangesView(object? args = null)
     {
@@ -46,7 +46,12 @@ public class ApplicationWindowVM : ObservableObject
     {
         ChangeScreenFrame(new GuardCoinVM(), "Coin Guard");
     }
-
+    
+    private void OpenArbitrageBot(object? args = null)
+    {
+        ChangeScreenFrame(new ArbitrageBotVM(), "Arbitrage BOT");
+    }
+    
     private void ChangeScreenFrame(ObservableObject view, string captionName)
     {
         MainContent = view;
@@ -58,5 +63,6 @@ public class ApplicationWindowVM : ObservableObject
         AvailableExchangesCommand = new BaseCommand(OpenAvailableExchangesView);
         HomeViewCommand = new BaseCommand(OpenHomeView);
         GuardCoinCommand = new BaseCommand(OpenGuardCoinView);
+        ArbitrageBotCommand = new BaseCommand(OpenArbitrageBot);
     }
 }

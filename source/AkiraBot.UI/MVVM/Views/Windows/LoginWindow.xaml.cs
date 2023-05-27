@@ -22,12 +22,14 @@ public partial class LoginWindow : Window
     }
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
-    {
-        Application.Current.Shutdown();
+    { 
+        //Application.Current.Shutdown();
+        Close();
     }
 
     private void btnLogin_Click(object sender, RoutedEventArgs e)
     {
-
+        new ApplicationWindow().Show();
+        Close();
     }
 }
