@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using AkiraBot.Bot;
+using AkiraBot.Bot.Models.Configs;
 using AkiraBot.ExchangeClients;
 using AkiraBot.ExchangeClients.Clients;
 using AkiraBot.ExchangesRestAPI.Options;
@@ -22,6 +23,7 @@ public class GuardCoinParsingVM : ObservableObject
     private double _progressBarValue;
     private decimal _currentBalance;
     private IExchangeClient _client;
+    private CryptoBot _bot;
     
     public double ProgressBarValue
     {
@@ -40,11 +42,15 @@ public class GuardCoinParsingVM : ObservableObject
             SecretKey = botKeys.SecretKey,
             OrganizationId = botKeys.OrgID
         });
-        var task = Task.Factory.StartNew(() =>
+        _bot = new CryptoBot(_client, new CurrencyInfo//todo исправить под 1 модель, брух
         {
-            ParsingData();
+            FirstCoin = Information.FirstCoin,
+            SecondCoin = Information.SecondCoin,
+            UpperPrice = Information.UpperPrice,
+            BottomPrice = Information.BottomPrice,
+            BalanceLimit = 0
         });
-        
+        var task = Task.Factory.StartNew(ParsingData);
     }
     
     public GuardCoinParameters Information { get; set; }
@@ -62,6 +68,7 @@ public class GuardCoinParsingVM : ObservableObject
     private void ParsingData()
     {
         var currency = Information.FirstCoin + Information.SecondCoin;
+        var task = Task.Factory.StartNew(_bot.StartBot);
         
         while (true)
         {

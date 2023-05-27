@@ -44,7 +44,7 @@ public class ApplicationWindowVM : ObservableObject
     
     private void OpenGuardCoinView(object? args = null)
     {
-        ChangeScreenFrame(new GuardCoinVM(), "Guard Coin BOT");
+        ChangeScreenFrame(new GuardCoinVM(), "Coin Guard");
     }
 
     private void ChangeScreenFrame(ObservableObject view, string captionName)
