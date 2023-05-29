@@ -34,6 +34,10 @@
         <DataTemplate DataType="{x:Type viewModel:ArbitrageBotVM}">
             <uc:ArbitrageBotUC/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModel:AccountBalanceVM}">
+            <uc:AccountBalanceUC/>
+        </DataTemplate>
     </Window.Resources>
     
     <Border CornerRadius="10"                    
@@ -118,6 +122,7 @@
                         
                         <!-- 4 - Balance -->
                         <RadioButton Style="{StaticResource menuButton}"
+                                     Command="{Binding BalanceCommand}"
                                      Tag="{StaticResource color1}"> 
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="Coins" Style="{StaticResource menuButtonIcon}"/>

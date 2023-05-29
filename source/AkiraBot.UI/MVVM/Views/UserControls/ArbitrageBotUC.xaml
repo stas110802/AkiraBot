@@ -217,12 +217,15 @@
              </StackPanel>
          </StackPanel>
          
+         
+     </StackPanel>
+     
          <Button Content="START" 
                  HorizontalAlignment="Left"
                  Command="{Binding StartBotCommand}"
                  Style="{StaticResource defButton}"
-                 Margin="50 30 0 0"/>
+                 Margin="150 480 0 0"/>
+    
          
-     </StackPanel>
     </Grid>
 </UserControl>

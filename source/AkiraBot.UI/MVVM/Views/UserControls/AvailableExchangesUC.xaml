@@ -17,14 +17,14 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:AvailableExchange}">
-                    <Grid Height="90">
+                    <Grid Height="110">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                            
-                        <Image Width="80" 
-                               Height="80"
+                        <Image Width="100" 
+                               Height="100"
                                Stretch="Fill"
                                VerticalAlignment="Top"
                                Source="{Binding ImagePath}"/>
@@ -41,7 +41,6 @@
                                        FontFamily="Montserrat"
                                        FontWeight="Normal"
                                        Foreground="{StaticResource titleColor3}"/>
-                            <Border Height="20"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

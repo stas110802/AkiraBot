@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
 
-public partial class LoginWindow : Window
+public partial class RegisterWindow : Window
 {
-    public LoginWindow()
+    public RegisterWindow()
     {
         InitializeComponent();
     }
@@ -30,7 +30,6 @@ public partial class LoginWindow : Window
     private void btnLogin_Click(object sender, RoutedEventArgs e)
     {
         new ApplicationWindow().Show();
-        new RegisterWindow().Show();
         Close();
     }
 }

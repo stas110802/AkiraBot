@@ -11,6 +11,7 @@
              d:DataContext="{d:DesignInstance Type=viewModel:GuardCoinVM}"
              d:DesignHeight="550" d:DesignWidth="800">
  <Grid>
+    
      <TextBlock Text="Parameters for guard coin"
                 FontSize="18"
                 Width="250"
@@ -42,19 +43,18 @@
          </fa:IconImage>
      </TextBlock>
      
-         <Border Name="mask" 
-                 Background="{StaticResource panelOverColor}" 
-                 CornerRadius="5"  
-                 HorizontalAlignment="Left" 
-                 VerticalAlignment="Top"
-                 Margin="15 35 0 0"
-                 Width="500" 
-                 Height="450"/>
+     <Border Background="{StaticResource panelOverColor}" 
+             CornerRadius="5"  
+             HorizontalAlignment="Left" 
+             VerticalAlignment="Top"
+             Margin="15 35 0 0"
+             Width="500" 
+             Height="350"/>
 
      <StackPanel Orientation="Vertical" 
                  Background="Transparent"
                  Width="500" 
-                 Height="450"
+                 Height="350"
                  Margin="35 35 0 0"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top">
@@ -172,13 +172,11 @@
                  </fa:IconImage.ToolTip>
              </fa:IconImage>
          </StackPanel> 
-         
-         <Button Content="START" 
-                 HorizontalAlignment="Left"
-                 Command="{Binding StartBotCommand}"
-                 Style="{StaticResource defButton}"
-                 Margin="50 30 0 0"/>
-         
      </StackPanel>
+     <Button Content="START" 
+             Command="{Binding StartBotCommand}"
+             HorizontalAlignment="Left"
+             Style="{StaticResource defButton}"
+             Margin="150 250 0 0"/>
  </Grid>     
 </UserControl>
