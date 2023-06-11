@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using AkiraBot.Bot;
 using AkiraBot.Bot.Models.Configs;
+using AkiraBot.Bot.Models.Logs;
 using AkiraBot.ExchangeClients;
 using AkiraBot.ExchangeClients.Clients;
 using AkiraBot.ExchangesRestAPI.Options;
@@ -23,7 +24,7 @@ public class GuardCoinParsingVM : ObservableObject
     private double _progressBarValue;
     private decimal _currentBalance;
     private IExchangeClient _client;
-    private CryptoBot _bot;
+    private TakeProfitStopLossBot _bot;
     
     public double ProgressBarValue
     {
@@ -42,7 +43,7 @@ public class GuardCoinParsingVM : ObservableObject
             SecretKey = botKeys.SecretKey,
             OrganizationId = botKeys.OrgID
         });
-        _bot = new CryptoBot(_client, new CurrencyInfo//todo исправить под 1 модель, брух
+        _bot = new TakeProfitStopLossBot(_client, new CurrencyInfo//todo исправить под 1 модель, брух
         {
             FirstCoin = Information.FirstCoin,
             SecondCoin = Information.SecondCoin,
@@ -68,10 +69,23 @@ public class GuardCoinParsingVM : ObservableObject
     private void ParsingData()
     {
         var currency = Information.FirstCoin + Information.SecondCoin;
-        //var task = Task.Factory.StartNew(_bot.StartBot);
-        
+        var task = Task.Factory.StartNew(() =>
+        {
+            var result = _bot.StartBot();
+            if (result is ErrorLog errorLog)
+            {
+                MessageBox.Show($"{errorLog.Message}\n{errorLog.ErrorDate}");
+            }
+            else if (result is OrderLog orderLog)
+            {
+                MessageBox.Show($"Успешная сделка!");
+            }
+        });
+       
         while (true)
         {
+            if(task.IsCompleted)
+                return;
             CurrentPrice = _client.GetCurrencyPrice(currency);
             var balance = _client.GetAccountBalance()
                 .FirstOrDefault(x => x.Currency == Information.FirstCoin);

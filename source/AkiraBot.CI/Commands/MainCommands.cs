@@ -9,7 +9,7 @@ namespace AkiraBot.CI.Commands;
 
 public sealed class MainCommands : VoidCommandsObject
 {
-   private CryptoBot? _bot;
+   private TakeProfitStopLossBot? _bot;
     private IExchangeClient? _client;
 
     private readonly ConfigCommands _configCommands;
@@ -23,7 +23,7 @@ public sealed class MainCommands : VoidCommandsObject
         //VoidCommands = CommandHelper.GetConsoleCommands(this, typeof(MainCommands));
     }
 
-    public MainCommands(IExchangeClient? client, CryptoBot? bot)
+    public MainCommands(IExchangeClient? client, TakeProfitStopLossBot? bot)
         : this()
     {
         _client = client;
@@ -119,7 +119,7 @@ public sealed class MainCommands : VoidCommandsObject
 
         if (result != "Y") return;
 
-        _bot = new CryptoBot(_client!, new CurrencyInfo
+        _bot = new TakeProfitStopLossBot(_client!, new CurrencyInfo
         {
             FirstCoin = sellCoin,
             SecondCoin = buyCoin,
