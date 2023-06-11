@@ -32,6 +32,7 @@ public class ApplicationWindowVM : ObservableObject
     public BaseCommand GuardCoinCommand { get; set; }
     public BaseCommand ArbitrageBotCommand { get; set; }
     public BaseCommand BalanceCommand { get; set; }
+    public BaseCommand TradingCommand { get; set; }
     
     private void OpenAvailableExchangesView(object? args = null)
     {
@@ -58,6 +59,11 @@ public class ApplicationWindowVM : ObservableObject
         ChangeScreenFrame(new AccountBalanceVM(), "Balance");
     }
     
+    private void OpenTradingCrypto(object? args = null)
+    {
+        ChangeScreenFrame(new CryptoTradingVM(), "Market");
+    }
+    
     private void ChangeScreenFrame(ObservableObject view, string captionName)
     {
         MainContent = view;
@@ -71,5 +77,6 @@ public class ApplicationWindowVM : ObservableObject
         GuardCoinCommand = new BaseCommand(OpenGuardCoinView);
         ArbitrageBotCommand = new BaseCommand(OpenArbitrageBot);
         BalanceCommand = new BaseCommand(OpenBalance);
+        TradingCommand = new BaseCommand(OpenTradingCrypto);
     }
 }

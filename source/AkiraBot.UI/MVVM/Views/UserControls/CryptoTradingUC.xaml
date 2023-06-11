@@ -1,0 +1,141 @@
+<UserControl x:Class="AkiraBot.UI.MVVM.Views.UserControls.CryptoTradingUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AkiraBot.UI.MVVM.Views.UserControls"
+             xmlns:models="clr-namespace:AkiraBot.UI.MVVM.Models"
+             xmlns:viewModel="clr-namespace:AkiraBot.UI.MVVM.ViewModels.UserControls"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewModel:CryptoTradingVM}"
+             d:DesignHeight="550" d:DesignWidth="800">
+    <Grid>
+    
+     <TextBlock Text="Parameters for trading crypto"
+                FontSize="18"
+                Width="250"
+                Height="30"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                FontFamily="Montserrat"
+                Margin="30 0 0 0"
+                Foreground="{StaticResource titleColor1}">
+         <fa:IconImage Width="15"
+                       Height="15"
+                       Foreground="{StaticResource titleColor1}"
+                       Icon="Question">
+             <fa:IconImage.ToolTip>
+                 <ToolTip Background="Transparent"
+                          BorderThickness="0">
+                     <TextBlock Background="Transparent"
+                                FontSize="15"
+                                Foreground="{StaticResource titleColor1}"
+                                FontFamily="Monserrat">
+                         <Run Text="Параметры для маркет торговли."/> 
+                         <LineBreak/>
+                         <Run Text="Простая покупка и продажа криптовалюты."/> 
+                     </TextBlock>
+                 </ToolTip>
+             </fa:IconImage.ToolTip>
+         </fa:IconImage>
+     </TextBlock>
+     
+     <Border Background="{StaticResource panelOverColor}" 
+             CornerRadius="5"  
+             HorizontalAlignment="Left" 
+             VerticalAlignment="Top"
+             Margin="15 35 0 0"
+             Width="500" 
+             Height="350"/>
+
+     <StackPanel Orientation="Vertical" 
+                 Background="Transparent"
+                 Width="500" 
+                 Height="350"
+                 Margin="35 35 0 0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top">
+         <!-- Coin for sale parameter -->
+         <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin for sale: " Height="30" 
+                       FontSize="22" Width="150" 
+                       FontFamily="Montserrat"
+                       Margin="0 15 0 0"
+                       Foreground="{StaticResource titleColor3}"/>
+            
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBox Width="200" 
+                         Height="30"
+                         Text="{Binding FirstCoin}"
+                         FontSize="20"
+                         Background="Transparent" 
+                         Foreground="{StaticResource titleColor2}"
+                         BorderThickness="0 0 0 1"
+                         BorderBrush="DarkGray"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- Coin to buy parameter --> 
+        <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin to buy: " Height="30" 
+                       FontSize="22" Width="150" 
+                       FontFamily="Montserrat"
+                       Margin="0 15 0 0"
+                       Foreground="{StaticResource titleColor3}"/>
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBox Width="200" 
+                         Height="30"
+                         Text="{Binding SecondCoin}"
+                         FontSize="20"
+                         Background="Transparent" 
+                         Foreground="{StaticResource titleColor2}"
+                         BorderThickness="0 0 0 1"
+                         BorderBrush="DarkGray"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- UPPER PRICE -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="Amount:" Height="30" 
+                        FontSize="22" Width="150" 
+                        FontFamily="Montserrat"
+                        Margin="0 15 0 0"
+                        Foreground="{StaticResource titleColor3}"/>
+                 <StackPanel Orientation="Vertical" Height="31">
+                 <TextBox Width="200" 
+                          Height="30"
+                          Text="{Binding Amount}"
+                          FontSize="20"
+                          Background="Transparent" 
+                          Foreground="{StaticResource titleColor2}"
+                          BorderThickness="0 0 0 1"
+                          BorderBrush="DarkGray"/>
+             </StackPanel>
+             <fa:IconImage Width="20"
+                           Height="20"
+                           Foreground="{StaticResource titleColor1}"
+                           Icon="CircleQuestion">
+                 <fa:IconImage.ToolTip>
+                     <ToolTip Background="Transparent"
+                              BorderThickness="0">
+                         <TextBlock Background="Transparent"
+                                    FontSize="15"
+                                    Foreground="{StaticResource titleColor1}"
+                                    FontFamily="Monserrat">
+                             <Run Text="Количество, которое хотим купить."/> 
+                             <LineBreak/>
+                             <Run Text=""/> 
+                         </TextBlock>
+                     </ToolTip>
+                 </fa:IconImage.ToolTip>
+             </fa:IconImage>
+         </StackPanel> 
+     </StackPanel>
+     <Button Content="Create order" 
+             Command="{Binding CreateOrderCommand}"
+             HorizontalAlignment="Left"
+             Style="{StaticResource defButton}"
+             Margin="150 250 0 0"/>
+ </Grid>     
+</UserControl>

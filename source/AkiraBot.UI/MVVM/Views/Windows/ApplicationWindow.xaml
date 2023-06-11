@@ -38,6 +38,10 @@
         <DataTemplate DataType="{x:Type viewModel:AccountBalanceVM}">
             <uc:AccountBalanceUC/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModel:CryptoTradingVM}">
+            <uc:CryptoTradingUC/>
+        </DataTemplate>
     </Window.Resources>
     
     <Border CornerRadius="10"                    
@@ -113,7 +117,8 @@
                         
                         <!-- 3 - Market -->
                         <RadioButton Style="{StaticResource menuButton}"
-                                     Tag="{StaticResource color1}"> 
+                                     Tag="{StaticResource color1}"
+                                     Command="{Binding TradingCommand}"> 
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="Shop" Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Trading Crypto" Style="{StaticResource menuButtonText}"/>

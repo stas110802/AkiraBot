@@ -1,4 +1,8 @@
 using System.Collections.ObjectModel;
+using AkiraBot.Bot;
+using AkiraBot.ExchangeClients;
+using AkiraBot.ExchangeClients.Clients;
+using AkiraBot.ExchangesRestAPI.Options;
 using AkiraBot.UI.Core;
 using AkiraBot.UI.MVVM.Models;
 
@@ -7,7 +11,8 @@ namespace AkiraBot.UI.MVVM.ViewModels.UserControls;
 public class AvailableExchangesVM : ObservableObject
 {
     private ObservableCollection<AvailableExchange> _availableExchanges;
-
+    private AvailableExchange _selectedAvailableExchange;
+    
     public AvailableExchangesVM()
     {
         _availableExchanges = new ObservableCollection<AvailableExchange>
@@ -28,9 +33,40 @@ public class AvailableExchangesVM : ObservableObject
         };
     }
 
+    public static IExchangeClient SelectedExchange;
+    
     public ObservableCollection<AvailableExchange> AvailableExchanges
     {
         get => _availableExchanges;
         set => Set(ref _availableExchanges, value, nameof(AvailableExchanges));
+    }
+    
+    public AvailableExchange SelectedAvailableExchange
+    {
+        get => _selectedAvailableExchange;
+        set
+        {
+            Set(ref _selectedAvailableExchange, value, nameof(SelectedAvailableExchange));
+            InitializeClient();
+        }
+    }
+
+    private void InitializeClient()
+    {
+        var botKeys = ConfigInitializer.GetClientConfig();
+        
+        if (SelectedAvailableExchange.Name == "Binance")
+        {
+            
+        }
+        else if (SelectedAvailableExchange.Name == "NiceHash")
+        {
+            SelectedExchange = new NiceHashClient(new NiceHashOptions
+            {
+                PublicKey = botKeys.Key,
+                SecretKey = botKeys.SecretKey,
+                OrganizationId = botKeys.OrgID
+            });
+        }
     }
 }

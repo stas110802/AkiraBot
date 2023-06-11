@@ -98,14 +98,13 @@ public sealed class NiceHashClient : IExchangeClient
     {
         var strPrice = price.ToString(CultureInfo.InvariantCulture);
         var strQuantity = amount.ToString(CultureInfo.InvariantCulture);
-        // create post url
         var query = $"?market={currency}&side=SELL&type=LIMIT&quantity={strQuantity}&price={strPrice}";
-        // create an order and deserialize the received response
+        
         var response = _server.CreateRequest(Method.Post, NiceHashEndpoint.Order, query)
             .Authorize(true)
             .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
-        // if the order id is not empty, we have created an order
+        
         return deserialize?["orderId"]?.ToString() != "";
     }
 
@@ -119,7 +118,7 @@ public sealed class NiceHashClient : IExchangeClient
             .Authorize(true)
             .Execute();
         var deserialize = JsonConvert.DeserializeObject<JToken>(response);
-        // if the order id is not empty, we have created an order
+        
         return deserialize?["orderId"]?.ToString() != "";
     }
 

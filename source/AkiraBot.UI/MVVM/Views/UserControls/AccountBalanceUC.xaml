@@ -27,7 +27,7 @@
                        Height="55"
                        Foreground="{StaticResource titleColor3}"
                        FontFamily="Monserrat"
-                       Margin="330 0 0 0"/>
+                       Margin="300 0 0 0"/>
         </StackPanel>
         <ListBox ItemsSource="{Binding AccountBalance}"
                  Grid.Row="1"
@@ -37,21 +37,21 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:AccountBalance}">
-                    <Grid Height="100">
+                    <Grid Height="80">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="500"/>
                         </Grid.ColumnDefinitions>
                            
-                        <Image Width="80" 
-                               Height="80"
+                        <Image Width="60" 
+                               Height="60"
                                Stretch="Fill"
                                VerticalAlignment="Center"
                                Source="{Binding ImagePath}">
                             <Image.Clip>
-                                <RectangleGeometry RadiusX="40" RadiusY="40"
-                                                   Rect="0,0,80,80"/>
+                                <RectangleGeometry RadiusX="30" RadiusY="30"
+                                                   Rect="0,0,60,60"/>
                             </Image.Clip>
                         </Image>
                         <StackPanel Grid.Column="1" 
@@ -59,7 +59,7 @@
                                     Margin="30 0 0 0"
                                     Orientation="Vertical">
                             <TextBlock Text="{Binding Currency}"
-                                       FontSize="35"
+                                       FontSize="30"
                                        FontWeight="Medium"
                                        FontFamily="Montserrat"
                                        Foreground="{StaticResource titleColor1}"/>
@@ -73,7 +73,7 @@
                                     Margin="50 0 0 0"
                                     Orientation="Vertical">
                             <TextBlock Text="{Binding Balance}"
-                                       FontSize="35"
+                                       FontSize="30"
                                        FontWeight="Medium"
                                        FontFamily="Montserrat"
                                        Foreground="{StaticResource titleColor1}"/>

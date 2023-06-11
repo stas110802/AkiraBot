@@ -11,6 +11,7 @@
     <Grid>
         
         <ListBox ItemsSource="{Binding AvailableExchanges}"
+                 SelectedItem="{Binding SelectedAvailableExchange}"
                  IsHitTestVisible="True"
                  BorderThickness="0"
                  Background="Transparent"
