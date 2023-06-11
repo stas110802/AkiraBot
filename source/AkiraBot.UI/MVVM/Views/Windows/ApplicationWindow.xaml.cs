@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using AkiraBot.Domain;
+using AkiraBot.Domain.Models;
 using AkiraBot.UI.MVVM.ViewModels.Windows;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
@@ -13,6 +15,11 @@ public partial class ApplicationWindow : Window
     {
         InitializeComponent();
         DataContext = new ApplicationWindowVM();
+        using var db = new ApplicationContext();
+        foreach (var user in db.Logs)
+        {
+            MessageBox.Show(user.User.Login);
+        }
     }
     
     [DllImport("user32.dll")]
