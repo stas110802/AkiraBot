@@ -33,6 +33,14 @@
                  Margin="35 35 0 0"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top">
+         <Button Style="{StaticResource controlButton}"
+                 Click="ButtonCloseOnClick"
+                 HorizontalAlignment="Right"
+                 Margin="0 5 25 0"
+                 Tag="{StaticResource color4}">
+             <fa:IconImage Icon="Xmark"
+                           Style="{StaticResource controlButtonIcon}"/>
+         </Button> 
          <!-- Coin for sale parameter -->
          <StackPanel Orientation="Horizontal" Height="60">
             <TextBlock Text="Coin for sale: " Height="30" 

@@ -46,7 +46,7 @@ public sealed class GuardCoinVM : ObservableObject
     }
     
     public BaseCommand StartBotCommand { get; set; }
-
+    
     private void StartBot(object? obj = null)
     {
         new GuardCoinParsingWindow( new GuardCoinParameters()

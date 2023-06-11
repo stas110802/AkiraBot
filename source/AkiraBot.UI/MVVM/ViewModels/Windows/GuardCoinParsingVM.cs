@@ -68,7 +68,7 @@ public class GuardCoinParsingVM : ObservableObject
     private void ParsingData()
     {
         var currency = Information.FirstCoin + Information.SecondCoin;
-        var task = Task.Factory.StartNew(_bot.StartBot);
+        //var task = Task.Factory.StartNew(_bot.StartBot);
         
         while (true)
         {
@@ -83,14 +83,14 @@ public class GuardCoinParsingVM : ObservableObject
 
     private void StartProgressBar()
     {
-        for (var i = 0; i < 100; i += 10)
+        for (var i = 0; i < 100; i += 1)
         {
             if (ProgressBarValue >= 100)
                 ProgressBarValue = 0;
             
             ProgressBarValue += 1;
-            Thread.Sleep(100);
-            // Task.WaitAll(new Task[] { Task.Delay(2000) });
+            //Thread.Sleep(100);
+            Task.WaitAll(new Task[] { Task.Delay(100) });
         }
     }
 }

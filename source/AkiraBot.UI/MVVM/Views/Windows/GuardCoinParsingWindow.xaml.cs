@@ -15,6 +15,11 @@ public partial class GuardCoinParsingWindow : Window
         InitializeComponent();
         DataContext = new GuardCoinParsingVM(info);
     }
+
+    private void ButtonCloseOnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
     
     [DllImport("user32.dll")]
     private static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);

@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Windows.Forms;
 using AkiraBot.Bot;
 using AkiraBot.ExchangeClients;
 using AkiraBot.ExchangeClients.Clients;
@@ -54,12 +55,12 @@ public class AvailableExchangesVM : ObservableObject
     private void InitializeClient()
     {
         var botKeys = ConfigInitializer.GetClientConfig();
-        
-        if (SelectedAvailableExchange.Name == "Binance")
+        var name = SelectedAvailableExchange.Name;
+        if (name == "Binance")
         {
             
         }
-        else if (SelectedAvailableExchange.Name == "NiceHash")
+        else if (name == "NiceHash")
         {
             SelectedExchange = new NiceHashClient(new NiceHashOptions
             {
@@ -68,5 +69,6 @@ public class AvailableExchangesVM : ObservableObject
                 OrganizationId = botKeys.OrgID
             });
         }
+        MessageBox.Show($"{name} выбран!");
     }
 }
