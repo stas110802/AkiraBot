@@ -18,7 +18,7 @@ public class ConfigCommands : VoidCommandsObject
     {
         var cfg = new BotConfig
         {
-            Client = GetClient(),
+            Clients = GetClient(),
             Smtp = GetSmtp(),
             Recipients = GetRecipients()
         };
@@ -70,18 +70,16 @@ public class ConfigCommands : VoidCommandsObject
         ConsoleHelper.WriteLine(" - изменить почту для получения уведомлений", ConsoleColor.Gray);
     }
 
-    private BotKeys GetClient()
+    private ConfigClients GetClient()
     {
         Console.WriteLine("Client setting");
         ReadData("Key: ", out var key);
         ReadData("Secret key: ", out var secretKey);
         ReadData("Organization ID: ", out var orgId);
 
-        return new BotKeys
+        return new ConfigClients
         {
-            Key = key,
-            SecretKey = secretKey,
-            OrgID = orgId
+           
         };
     }
 

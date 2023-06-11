@@ -13,9 +13,9 @@ public static class ConfigInitializer
 
     public static BotConfig? Config { get; set; }
 
-    public static BotKeys? GetClientConfig()
+    public static ConfigClients? GetClientConfig()
     {
-        return Config?.Client;
+        return Config?.Clients;
      }
 
     public static SmtpHost? GetSmtpEmailConfig()
@@ -39,10 +39,10 @@ public static class ConfigInitializer
         Config = cfg;
     }
     
-    public static void UpdateClientInfo(BotKeys client)
+    public static void UpdateClientInfo(ConfigClients client)
     {
         if (Config == null) return;
-        Config.Client = client;
+        Config.Clients = client;
         WriteNewConfig(Config);
     }
 
@@ -60,7 +60,7 @@ public static class ConfigInitializer
         WriteNewConfig(Config);
     }
 
-    private static string ConfigFilePath => $"{PathHelper.PathList.ConfigsPath}config.json";
+    private static string ConfigFilePath => $"{PathHelper.PathList.ConfigsPath}cfg.json";
     
     private static T? GetConfig<T>(string path)
         where T : class

@@ -39,9 +39,9 @@ public class GuardCoinParsingVM : ObservableObject
         var botKeys = ConfigInitializer.GetClientConfig();
         _client = new NiceHashClient(new NiceHashOptions
         {
-            PublicKey = botKeys.Key,
-            SecretKey = botKeys.SecretKey,
-            OrganizationId = botKeys.OrgID
+            PublicKey = botKeys.NiceHashInfo.PublicKey,
+            SecretKey = botKeys.NiceHashInfo.SecretKey,
+            OrganizationId = botKeys.NiceHashInfo.OrganizationId
         });
         _bot = new TakeProfitStopLossBot(_client, new CurrencyInfo//todo исправить под 1 модель, брух
         {

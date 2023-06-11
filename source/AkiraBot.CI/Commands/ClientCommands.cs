@@ -30,9 +30,9 @@ public sealed class ClientCommands : MultiCommandsObject<IExchangeClient>
         var client = new NiceHashClient( 
             new NiceHashOptions
             {
-                PublicKey = cfg.Key,
-                SecretKey = cfg.SecretKey,
-                OrganizationId = cfg.OrgID
+                PublicKey = cfg.NiceHashInfo.PublicKey,
+                SecretKey = cfg.NiceHashInfo.SecretKey,
+                OrganizationId = cfg.NiceHashInfo.OrganizationId
             }
         );
         Console.Write("Биржа ");

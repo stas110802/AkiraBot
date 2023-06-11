@@ -64,9 +64,9 @@ public class AvailableExchangesVM : ObservableObject
         {
             SelectedExchange = new NiceHashClient(new NiceHashOptions
             {
-                PublicKey = botKeys.Key,
-                SecretKey = botKeys.SecretKey,
-                OrganizationId = botKeys.OrgID
+                PublicKey = botKeys.NiceHashInfo.PublicKey,
+                SecretKey = botKeys.NiceHashInfo.SecretKey,
+                OrganizationId = botKeys.NiceHashInfo.OrganizationId
             });
         }
         MessageBox.Show($"{name} выбран!");
