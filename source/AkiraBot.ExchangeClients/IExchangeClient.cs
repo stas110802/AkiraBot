@@ -53,6 +53,12 @@ public interface IExchangeClient
     /// </summary>
     /// <returns></returns>
     public bool CancelAllOrders();
+    
+    /// <summary>
+    /// Withdrawal currency
+    /// </summary>
+    /// <returns></returns>
+    public bool WithdrawalCurrency(string currency, decimal amount, string address);
 
     public void GetMyOrders();
 }

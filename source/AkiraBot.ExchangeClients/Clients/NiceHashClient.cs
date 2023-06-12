@@ -122,6 +122,19 @@ public sealed class NiceHashClient : IExchangeClient
         return deserialize?["orderId"]?.ToString() != "";
     }
 
+    public bool WithdrawalCurrency(string currency, decimal amount, string address)
+    {
+        var strQuantity = amount.ToString(CultureInfo.InvariantCulture);
+        var query = $"?currency={currency}&amount={strQuantity}&withdrawalAddressId={address}";
+        
+        var response = _server.CreateRequest(Method.Post, NiceHashEndpoint.Withdrawal, query)
+            .Authorize(true)
+            .Execute();
+        var deserialize = JsonConvert.DeserializeObject<JToken>(response);
+        
+        return deserialize?["id"]?.ToString() != "";
+    }
+
     public void GetMyOrders()
     {
         throw new Exception("Method not init");
@@ -146,4 +159,6 @@ public sealed class NiceHashClient : IExchangeClient
             return false;
         }
     }
+    
+    
 }

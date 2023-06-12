@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows.Forms;
@@ -97,9 +98,7 @@ public class RegisterVM : ObservableObject, ICommandInitializer
         new LoginWindow().Show();
         OnFrameStopped.Invoke(null, EventArgs.Empty);
     }
-
-    private bool CheckForNullableFields()
-    {
-        return UserName == null || Email == null;
-    }
+    
+    [MemberNotNullWhen(false, nameof(UserName), nameof(Email))]
+    private bool CheckForNullableFields() => UserName == null || Email == null;
 }

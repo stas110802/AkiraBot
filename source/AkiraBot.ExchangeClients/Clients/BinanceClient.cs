@@ -25,7 +25,15 @@ public class BinanceClient : BaseClient, IExchangeClient
 
     public decimal GetCurrencyPrice(string currency)
     {
-        throw new NotImplementedException();
+        var query = $"?symbol={currency}";
+        var response = _server.CreateRequest(Method.Get, BinanceEndpoint.CurrentPrice, query)
+            .Execute();
+        var token = JObject.Parse(response).SelectToken("price");
+        var result = decimal.TryParse(token.ToString(), out var price);
+        if (result is false)
+            throw new Exception("Не удалось получить цену валютной пары");
+        
+        return price;
     }
 
     public IEnumerable<CurrencyBalance> GetAccountBalance()
@@ -61,6 +69,11 @@ public class BinanceClient : BaseClient, IExchangeClient
     }
 
     public bool CancelAllOrders()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool WithdrawalCurrency(string currency, decimal amount, string address)
     {
         throw new NotImplementedException();
     }
