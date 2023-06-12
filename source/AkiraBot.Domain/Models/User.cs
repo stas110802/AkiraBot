@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AkiraBot.Domain.Models;
 
 [Table("User")]
-public class User : IdentifierRealize
+public class User : EntityBase
 {
     public User() { }
     public string Login { get; set; }

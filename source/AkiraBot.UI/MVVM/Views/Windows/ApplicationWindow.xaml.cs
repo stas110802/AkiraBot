@@ -15,11 +15,6 @@ public partial class ApplicationWindow : Window
     {
         InitializeComponent();
         DataContext = new ApplicationWindowVM();
-        using var db = new ApplicationContext();
-        foreach (var user in db.Logs)
-        {
-            MessageBox.Show(user.User.Login);
-        }
     }
     
     [DllImport("user32.dll")]

@@ -9,6 +9,9 @@ public class ApplicationContext : DbContext
     public DbSet<LogType> LogTypes { get; set; }
     public DbSet<OrderType> OrderTypes { get; set; }
     public DbSet<Log> Logs { get; set; }
+    public DbSet<SpotOrder> SpotOrders  { get; set; }
+    public DbSet<TakeProfitStopLossOrder> TakeProfitStopLossOrders { get; set; }
+    public DbSet<ArbitrageOrder> ArbitrageOrders { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

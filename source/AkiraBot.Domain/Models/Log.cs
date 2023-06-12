@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AkiraBot.Domain.Models;
 
 [Table("Log")]
-public class Log : IdentifierRealize
+public class Log : EntityBase
 {
     public string Message { get; set; }
     public DateTime SendDate { get; set; }
