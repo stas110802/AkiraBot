@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:AkiraBot.UI.MVVM.Views.Windows"
+        xmlns:windows="clr-namespace:AkiraBot.UI.MVVM.ViewModels.Windows"
+        d:DataContext="{d:DesignInstance Type=windows:RegisterVM}"
         mc:Ignorable="d"
         Title="LoginView" 
         Height="550" 
@@ -165,6 +167,7 @@
                                Margin="0,35,0,0"/>
                             
                     <TextBox x:Name="txtUser"
+                             Text="{Binding UserName}"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -189,9 +192,10 @@
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
-                               Margin="0,35,0,0"/>
+                               Margin="0,15,0,0"/>
                             
                     <TextBox x:Name="email"
+                             Text="{Binding Email}"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -219,17 +223,18 @@
                                Margin="0,15,0,0"/>
 
                     <PasswordBox x:Name="txtPass"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                                 PasswordChanged="PasswordBoxPasswordChanged"
+                                 FontSize="13"
+                                 FontWeight="Medium"
+                                 FontFamily="Montserrat"                            
+                                 Foreground="White"
+                                 CaretBrush="LightGray"
+                                 BorderBrush="DarkGray"
+                                 BorderThickness="0,0,0,2"
+                                 Height="28"
+                                 VerticalContentAlignment="Center"
+                                 Margin="0,5,0,0"
+                                 Padding="20,0,0,0">
 
                         <PasswordBox.Background>
                             <ImageBrush ImageSource="/Images/key-icon.png"
@@ -238,15 +243,15 @@
                         </PasswordBox.Background>
                     </PasswordBox>
 
-                    <Button x:Name="btnLogin"                          
+                    <Button x:Name="btnLogin"       
+                            Command="{Binding RegisterUserCommand}"
                             BorderThickness="0"
                             Content="REGISTER"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
-                            Margin="0,50,0,0"
-                            Click="btnLogin_Click">
+                            Margin="0,40,0,0">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -270,32 +275,9 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center"
-                                Margin="0,15,0,0">
-
-                        <TextBlock Text="No account?"
-                               Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"/>
-
-                        <TextBlock Text="Register"
-                               Foreground="White"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               Cursor="Hand"
-                               Margin="8,0,0,0"/>
-
-                    </StackPanel>
-
+                    
                 </StackPanel>
-
             </Grid>
-
         </Border>
-        
     </Border>
 </Window>

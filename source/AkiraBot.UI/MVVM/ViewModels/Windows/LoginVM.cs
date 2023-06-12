@@ -27,11 +27,13 @@ public class LoginVM : ObservableObject, ICommandInitializer
 
     public SecureString SecurePassword { private get; set; }
     public BaseCommand AuthorizeUserCommand { get; set; }
+    public BaseCommand OpenRegisterFormCommand { get; set; }
     public event EventHandler OnFrameStopped;
     
     public void InitializeCommands()
     {
         AuthorizeUserCommand = new BaseCommand(AuthorizeUser);
+        OpenRegisterFormCommand = new BaseCommand(OpenRegisterForm);
     }
     
     private void AuthorizeUser(object? args = null)
@@ -49,5 +51,11 @@ public class LoginVM : ObservableObject, ICommandInitializer
         }
 
         MessageBox.Show("Неверный логин или пароль");
+    }
+
+    private void OpenRegisterForm(object? args = null)
+    {
+        new RegisterWindow().Show();
+        OnFrameStopped.Invoke(null, EventArgs.Empty);
     }
 }

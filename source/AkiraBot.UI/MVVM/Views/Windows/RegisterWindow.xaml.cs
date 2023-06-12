@@ -1,5 +1,7 @@
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using AkiraBot.UI.MVVM.ViewModels.Windows;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
 
@@ -8,6 +10,9 @@ public partial class RegisterWindow : Window
     public RegisterWindow()
     {
         InitializeComponent();
+        var vm = new RegisterVM();
+        vm.OnFrameStopped += (_, _) => { Close(); };
+        DataContext = vm;
     }
     
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -22,14 +27,15 @@ public partial class RegisterWindow : Window
     }
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
-    { 
-        //Application.Current.Shutdown();
+    {
         Close();
     }
 
-    private void btnLogin_Click(object sender, RoutedEventArgs e)
+    private void PasswordBoxPasswordChanged(object sender, RoutedEventArgs e)
     {
-        new ApplicationWindow().Show();
-        Close();
+        if (DataContext != null)
+        {
+            ((dynamic)DataContext).SecurePassword = ((PasswordBox)sender).SecurePassword;
+        }
     }
 }

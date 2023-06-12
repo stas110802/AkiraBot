@@ -33,6 +33,28 @@ public class UserRepository : ContextBase, IRepository<User>
         Context.Users.Remove(item);
     }
 
+    public User? GetUserByLogin(string login)
+    {
+        return Context.Users.FirstOrDefault(x => x.Login == login);
+    }
+    
+    public User? GetUserByEmail(string email)
+    {
+        return Context.Users.FirstOrDefault(x => x.Email == email);
+    }
+
+    public bool IsUserCreateByLogin(string login)
+    {
+        var user = GetUserByLogin(login);
+        return user != null;
+    }
+    
+    public bool IsUserCreateByEmail(string email)
+    {
+        var user = GetUserByEmail(email);
+        return user != null;
+    }
+
     public void Dispose()
     {
         GC.SuppressFinalize(Context);
