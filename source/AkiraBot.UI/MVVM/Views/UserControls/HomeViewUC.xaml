@@ -8,5 +8,58 @@
              xmlns:viewModel="clr-namespace:AkiraBot.UI.MVVM.ViewModels.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-   
+   <Grid>
+       <Border Opacity="0.75">
+           <Border.Background>
+               <ImageBrush x:Name="BackImg"
+                           Stretch="None"/>
+           </Border.Background>
+           <StackPanel>
+       <StackPanel Orientation="Horizontal">
+           <TextBlock Text="Bitcoin - "
+                      Foreground="{StaticResource titleColor3}"
+                      FontFamily="Calisto MT"
+                      FontSize="20"
+                      FontWeight="Medium"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      Margin="40,20,0,0"/>
+           <TextBlock Text="{Binding BitcoinPrice}"
+                      Foreground="{StaticResource color8}"
+                      FontFamily="Calisto MT"
+                      FontSize="20"
+                      FontWeight="Medium"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      Margin="10,20,0,0"/>
+           <TextBlock Text="Eternium - "
+                      Foreground="{StaticResource titleColor3}"
+                      FontFamily="Calisto MT"
+                      FontSize="20"
+                      FontWeight="Medium"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      Margin="40,20,0,0"/>
+           <TextBlock Text="{Binding EterniumPrice}"
+                      Foreground="{StaticResource color8}"
+                      FontFamily="Calisto MT"
+                      FontSize="20"
+                      FontWeight="Medium"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      Margin="10,20,0,0"/>
+       </StackPanel>
+       <TextBlock Text="Welcome to Akira Bot"
+                  Foreground="{StaticResource titleColor3}"
+                  FontFamily="Calisto MT"
+                  FontSize="40"
+                  FontWeight="Normal"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="40,70,0,0"/>
+       
+           
+       </StackPanel>
+       </Border>
+   </Grid>
 </UserControl>

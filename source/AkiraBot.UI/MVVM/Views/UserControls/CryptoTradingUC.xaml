@@ -47,12 +47,12 @@
              VerticalAlignment="Top"
              Margin="15 35 0 0"
              Width="500" 
-             Height="350"/>
+             Height="250"/>
 
      <StackPanel Orientation="Vertical" 
                  Background="Transparent"
                  Width="500" 
-                 Height="350"
+                 Height="250"
                  Margin="35 35 0 0"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top">
@@ -136,6 +136,6 @@
              Command="{Binding CreateOrderCommand}"
              HorizontalAlignment="Left"
              Style="{StaticResource defButton}"
-             Margin="150 250 0 0"/>
+             Margin="150 60 0 0"/>
  </Grid>     
 </UserControl>

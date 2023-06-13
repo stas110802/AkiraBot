@@ -6,6 +6,7 @@ using AkiraBot.ExchangeClients.Clients;
 using AkiraBot.ExchangesRestAPI.Options;
 using AkiraBot.UI.Core;
 using AkiraBot.UI.MVVM.Models;
+using AkiraBot.Utilities.CommonTools.Models;
 
 namespace AkiraBot.UI.MVVM.ViewModels.UserControls;
 
@@ -16,6 +17,7 @@ public class AvailableExchangesVM : ObservableObject
     
     public AvailableExchangesVM()
     {
+        var pl = new PathList();
         _availableExchanges = new ObservableCollection<AvailableExchange>
         {
             new()
@@ -23,13 +25,13 @@ public class AvailableExchangesVM : ObservableObject
                 Name = "Binance",
                 Description = "Binance, is a global company that operates the largest cryptocurrency exchange." +
                               "\nBinance was founded in 2017 by Changpeng Zhao, a developer who had previously created high frequency trading software. ",
-                ImagePath = "Z:\\ProgrammingWorld\\Projects\\C#\\BotAlphaUI\\Images\\binance.png"
+                ImagePath = $"{pl.ImagesPath}binance.png"
             },
             new()
             {
                 Name = "NiceHash",
                 Description = "Best crypto trading exchange...",
-                ImagePath = "C:\\Projects\\AkiraBot\\source\\AkiraBot.UI\\Images\\niceHash.jpg"
+                ImagePath = $"{pl.ImagesPath}niceHash.jpg"
             }
         };
     }

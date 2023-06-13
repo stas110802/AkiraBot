@@ -3,8 +3,11 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using AkiraBot.Domain;
 using AkiraBot.UI.MVVM.ViewModels.Windows;
+using AkiraBot.Utilities.CommonTools.Models;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
 

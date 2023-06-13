@@ -1,8 +1,11 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using AkiraBot.Domain;
 using AkiraBot.UI.MVVM.ViewModels.Windows;
+using AkiraBot.Utilities.CommonTools.Models;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
 
