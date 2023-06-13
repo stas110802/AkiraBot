@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AkiraBot.Domain;
 using AkiraBot.UI.MVVM.ViewModels.Windows;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;
@@ -13,6 +14,7 @@ public partial class LoginWindow : Window
         var vm = new LoginVM();
         vm.OnFrameStopped += (_, _) => { Close(); };
         DataContext = vm;
+        ApplicationContext.RunSqlCreateDbFile();
     }
     
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)

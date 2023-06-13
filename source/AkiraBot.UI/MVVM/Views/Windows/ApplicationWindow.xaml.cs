@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using AkiraBot.Domain;
-using AkiraBot.Domain.Models;
 using AkiraBot.UI.MVVM.ViewModels.Windows;
 
 namespace AkiraBot.UI.MVVM.Views.Windows;

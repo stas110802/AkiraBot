@@ -6,6 +6,7 @@ public sealed class PathList
     public string ErrorsPath => $"{LogsPath}errors\\";
     public string LaunchesPath => $"{LogsPath}launches\\";
     public string ConfigsPath => $"{ProjectPath}\\configs\\";
+    public string SqlQueryPath => $"{ProjectPath}\\sqlQuery\\";
     private string LogsPath => $"{ProjectPath}\\logs\\";
     private string ProjectPath =>
         Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\.."));// ..\
