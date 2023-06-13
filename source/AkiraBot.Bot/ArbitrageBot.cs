@@ -24,45 +24,52 @@ public class ArbitrageBot
     {
         ILog log;
         var currencyPair = $"{_arbitrageInfo.FirstCoin}{_arbitrageInfo.SecondCoin}";
-        while (true)
+        try
         {
-            Thread.Sleep(3000);
-            var candle1 = _arbitrageInfo.FirstClient.GetCurrencyPrice(currencyPair);
-            var candle2 = _arbitrageInfo.SecondClient.GetCurrencyPrice(currencyPair);
-            if (candle1 < candle2)
-                continue;
+            while (true)
+            {
+                Thread.Sleep(3000);
+                var candle1 = _arbitrageInfo.FirstClient.GetCurrencyPrice(currencyPair);
+                var candle2 = _arbitrageInfo.SecondClient.GetCurrencyPrice(currencyPair);
+                if (candle1 < candle2)
+                    continue;
             
-            var difference = (candle1 / candle2 - 1) * 100; 
-            if(difference < 3) 
-                continue;
+                var difference = (candle1 / candle2 - 1) * 100; 
+                if(difference < 3) 
+                    continue;
 
-            var firstOrder = _arbitrageInfo.SecondClient.CreateSellOrder(
-                _arbitrageInfo.SecondCoin + _arbitrageInfo.FirstCoin, _arbitrageInfo.Amount);
-            if (firstOrder is false)
-            {
-                log = WriteErrorLog("[Арбитражный бот] первая сделка на покупки не удалась");
-                break;
-            }
+                var firstOrder = _arbitrageInfo.SecondClient.CreateSellOrder(
+                    _arbitrageInfo.SecondCoin + _arbitrageInfo.FirstCoin, _arbitrageInfo.Amount);
+                if (firstOrder is false)
+                {
+                    log = WriteErrorLog("[Арбитражный бот] первая сделка на покупки не удалась");
+                    break;
+                }
             
-            var withdrawal = _arbitrageInfo.SecondClient.WithdrawalCurrency(
-                _arbitrageInfo.FirstCoin, _arbitrageInfo.Amount, "");
-            if (withdrawal is false)
-            {
-                log = WriteErrorLog("[Арбитражный бот] перевод валюты на другую биржу не удался");
-                break;
-            }
+                var withdrawal = _arbitrageInfo.SecondClient.WithdrawalCurrency(
+                    _arbitrageInfo.FirstCoin, _arbitrageInfo.Amount, "");
+                if (withdrawal is false)
+                {
+                    log = WriteErrorLog("[Арбитражный бот] перевод валюты на другую биржу не удался");
+                    break;
+                }
             
-            Thread.Sleep(3000);
-            var newAmount = _arbitrageInfo.FirstClient.GetCurrencyBalance(
-                _arbitrageInfo.FirstCoin).AvailableBalance;
-            var secondOrder = _arbitrageInfo.FirstClient.CreateSellOrder(currencyPair, newAmount);
-            if (secondOrder is false)
-            {
-                log = WriteErrorLog("[Арбитражный бот] вторая сделка на продажу не удалась");
-                break;
+                Thread.Sleep(3000);
+                var newAmount = _arbitrageInfo.FirstClient.GetCurrencyBalance(
+                    _arbitrageInfo.FirstCoin).AvailableBalance;
+                var secondOrder = _arbitrageInfo.FirstClient.CreateSellOrder(currencyPair, newAmount);
+                if (secondOrder is false)
+                {
+                    log = WriteErrorLog("[Арбитражный бот] вторая сделка на продажу не удалась");
+                    break;
+                }
+                var arbitrageLog = new ArbitrageLog(_arbitrageInfo);
+                log = arbitrageLog;
             }
-            var arbitrageLog = new ArbitrageLog(_arbitrageInfo);
-            log = arbitrageLog;
+        }
+        catch (Exception e)
+        {
+            log = WriteErrorLog(e.Message);
         }
 
         return log;

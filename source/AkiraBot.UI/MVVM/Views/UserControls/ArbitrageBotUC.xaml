@@ -9,6 +9,7 @@
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewModel:ArbitrageBotVM}"
              d:DesignHeight="550" d:DesignWidth="800">
     <Grid>
         <TextBlock Text="Parameters for arbitrage bot"
@@ -107,7 +108,7 @@
                  <StackPanel Orientation="Vertical" Height="31">
                  <TextBox Width="200" 
                           Height="30"
-                          Text="{Binding UpperPrice}"
+                          Text="{Binding Amount}"
                           FontSize="20"
                           Background="Transparent" 
                           Foreground="{StaticResource titleColor2}"
@@ -125,6 +126,7 @@
                         Foreground="{StaticResource titleColor3}"/>
              <StackPanel Orientation="Vertical" Height="31">
                  <ComboBox Height="30" 
+                           SelectedValue="{Binding CandleType}"
                            Width="200" 
                            FontSize="18"
                            FontFamily="Monserrat"
@@ -172,6 +174,7 @@
                         Foreground="{StaticResource titleColor3}"/>
              <StackPanel Orientation="Vertical" Height="31">
                  <ComboBox Height="30" 
+                           SelectedValue="{Binding FirstExchange}"
                            Width="200" 
                            FontSize="18"
                            FontFamily="Monserrat"
@@ -199,6 +202,7 @@
                         Foreground="{StaticResource titleColor3}"/>
              <StackPanel Orientation="Vertical" Height="31">
                  <ComboBox Height="30" 
+                           SelectedValue="{Binding SecondExchange}"
                            Width="200" 
                            FontSize="18"
                            FontFamily="Monserrat"

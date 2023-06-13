@@ -9,6 +9,7 @@ public class AccountBalanceVM : ObservableObject
     private ObservableCollection<AccountBalance> _accountBalance;
     public AccountBalanceVM()
     {
+        var balance = AvailableExchangesVM.SelectedExchange.GetAccountBalance();
         _accountBalance = new ObservableCollection<AccountBalance>
         {
             new AccountBalance

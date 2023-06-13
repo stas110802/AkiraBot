@@ -49,7 +49,7 @@ public sealed class GuardCoinVM : ObservableObject
     
     private void StartBot(object? obj = null)
     {
-        new GuardCoinParsingWindow( new GuardCoinParameters()
+        new GuardCoinParsingWindow( new GuardCoinParameters
         {
             FirstCoin = _firstCoin.ToUpper(),
             SecondCoin = _secondCoin.ToUpper(),

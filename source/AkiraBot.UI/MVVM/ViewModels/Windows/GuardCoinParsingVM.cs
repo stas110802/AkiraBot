@@ -15,6 +15,7 @@ using AkiraBot.ExchangeClients.Clients;
 using AkiraBot.ExchangesRestAPI.Options;
 using AkiraBot.UI.Core;
 using AkiraBot.UI.MVVM.Models;
+using AkiraBot.UI.MVVM.ViewModels.UserControls;
 
 namespace AkiraBot.UI.MVVM.ViewModels.Windows;
 
@@ -23,8 +24,8 @@ public class GuardCoinParsingVM : ObservableObject
     private decimal _currentPrice;
     private double _progressBarValue;
     private decimal _currentBalance;
-    private IExchangeClient _client;
-    private TakeProfitStopLossBot _bot;
+    private readonly IExchangeClient _client;
+    private readonly TakeProfitStopLossBot _bot;
     
     public double ProgressBarValue
     {
@@ -35,14 +36,7 @@ public class GuardCoinParsingVM : ObservableObject
     public GuardCoinParsingVM(GuardCoinParameters info)
     {
         Information = info;
-        
-        var botKeys = ConfigInitializer.GetClientConfig();
-        _client = new NiceHashClient(new NiceHashOptions
-        {
-            PublicKey = botKeys.NiceHashInfo.PublicKey,
-            SecretKey = botKeys.NiceHashInfo.SecretKey,
-            OrganizationId = botKeys.NiceHashInfo.OrganizationId
-        });
+        _client = AvailableExchangesVM.SelectedExchange;
         _bot = new TakeProfitStopLossBot(_client, new CurrencyInfo//todo исправить под 1 модель, брух
         {
             FirstCoin = Information.FirstCoin,

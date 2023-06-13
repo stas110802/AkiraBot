@@ -1,0 +1,192 @@
+<Window x:Class="AkiraBot.UI.MVVM.Views.Windows.ArbitrageBotParsingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:AkiraBot.UI.MVVM.Views.Windows"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:windows="clr-namespace:AkiraBot.UI.MVVM.ViewModels.Windows"
+        d:DataContext="{d:DesignInstance Type=windows:ArbitrageBotParsingVM}"
+        mc:Ignorable="d"
+        Title="GuardCoinParsingWindow" 
+        Height="600"
+        Width="600"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Grid>
+        <Border Name="mask" 
+                Background="{StaticResource panelOverColor}" 
+                CornerRadius="5"  
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="15 35 0 0"
+                Width="500" 
+                Height="600"/>
+
+     <StackPanel Orientation="Vertical" 
+                 Background="Transparent"
+                 Width="500" 
+                 Height="600"
+                 MouseLeftButtonDown="ControlBarPanelOnMouseLeftButtonDown"
+                 Margin="35 35 0 0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top">
+         <Button Style="{StaticResource controlButton}"
+                 Click="ButtonCloseOnClick"
+                 HorizontalAlignment="Right"
+                 Margin="0 5 25 0"
+                 Tag="{StaticResource color4}">
+             <fa:IconImage Icon="Xmark"
+                           Style="{StaticResource controlButtonIcon}"/>
+         </Button> 
+         <!-- Coin for sale parameter -->
+         <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin for sale: " Height="30" 
+                       FontSize="22" Width="250" 
+                       FontFamily="Montserrat"
+                       Foreground="{StaticResource titleColor3}"/>
+            
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBlock Width="200" 
+                           Height="30"
+                           Text="{Binding ArbitrageInfo.FirstCoin}"
+                           FontSize="20"
+                           Background="Transparent" 
+                           Foreground="{StaticResource titleColor2}"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- Coin to buy parameter --> 
+        <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="Coin to buy: " Height="30" 
+                       FontSize="22" Width="250" 
+                       FontFamily="Montserrat"
+                       
+                       Foreground="{StaticResource titleColor3}"/>
+            <StackPanel Orientation="Vertical" Height="31">
+                <TextBlock Width="200" 
+                           Height="30"
+                           Text="{Binding ArbitrageInfo.SecondCoin}"
+                           FontSize="20"
+                           Background="Transparent" 
+                           Foreground="{StaticResource titleColor2}"/>
+            </StackPanel>
+        </StackPanel>
+         
+         <!-- amount -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="Amount: " Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+                 <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                          Height="30"
+                          Text="{Binding ArbitrageInfo.Amount}"
+                          FontSize="20"
+                          Background="Transparent" 
+                          Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- 1 ex -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="1 Exchange: " Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                          Height="30"
+                          Text="{Binding ArbitrageInfo.FirstExchangeName}"
+                          FontSize="20"
+                          Background="Transparent" 
+                          Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- 2 ex -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="2 Exchange: " Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                            Height="30"
+                            Text="{Binding ArbitrageInfo.SecondExchangeName}"
+                            FontSize="20"
+                            Background="Transparent" 
+                            Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- 1 PRICE -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="1 Price: " Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                            Height="30"
+                            Text="{Binding FirstPrice}"
+                            FontSize="20"
+                            Background="Transparent" 
+                            Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- 2 PRICE -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="2 Price: " Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                            Height="30"
+                            Text="{Binding SecondPrice}"
+                            FontSize="20"
+                            Background="Transparent" 
+                            Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         <!-- DIF -->
+         <StackPanel Orientation="Horizontal" Height="60">
+             <TextBlock Text="Difference:" Height="30" 
+                        FontSize="22" Width="250" 
+                        FontFamily="Montserrat"
+                        Foreground="{StaticResource titleColor3}"/>
+             <StackPanel Orientation="Vertical" Height="31">
+                 <TextBlock Width="200" 
+                            Height="30"
+                            Text="{Binding Difference}"
+                            FontSize="20"
+                            Background="Transparent" 
+                            Foreground="{StaticResource titleColor2}"/>
+             </StackPanel>
+         </StackPanel> 
+         
+         
+         <StackPanel Background="Transparent">
+             <ProgressBar Width="400" 
+                          Height="30"
+                          Margin="0 20 0 0"
+                          Background="{StaticResource color5}"
+                          Minimum="0"
+                          Maximum="100"
+                          Value="{Binding ProgressBarValue, Mode=OneWay}"
+                          Foreground="{StaticResource color1}"></ProgressBar>
+             <TextBlock HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        FontFamily="Comic Sans MS"
+                        Margin="0,-30,0,0">
+                 Parsing data...
+             </TextBlock>
+         </StackPanel>
+     </StackPanel>
+    </Grid>
+</Window>

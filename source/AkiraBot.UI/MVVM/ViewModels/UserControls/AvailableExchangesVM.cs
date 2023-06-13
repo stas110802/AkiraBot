@@ -58,7 +58,11 @@ public class AvailableExchangesVM : ObservableObject
         var name = SelectedAvailableExchange.Name;
         if (name == "Binance")
         {
-            
+            SelectedExchange = new BinanceClient(new BinanceOptions
+            {
+                PublicKey = botKeys.BinanceInfo.PublicKey,
+                SecretKey = botKeys.BinanceInfo.SecretKey
+            });
         }
         else if (name == "NiceHash")
         {

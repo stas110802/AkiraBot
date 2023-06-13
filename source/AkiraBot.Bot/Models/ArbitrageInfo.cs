@@ -1,5 +1,6 @@
 using AkiraBot.Bot.Enums;
 using AkiraBot.ExchangeClients;
+using AkiraBot.ExchangeClients.Clients;
 
 namespace AkiraBot.Bot.Models;
 
@@ -16,4 +17,7 @@ public class ArbitrageInfo
     public CandleType Type { get; set; }
     public IExchangeClient FirstClient { get; set; }
     public IExchangeClient SecondClient { get; set; }
+
+    public string FirstExchangeName => FirstClient is BinanceClient ? "Binance" : "NiceHash";
+    public string SecondExchangeName => SecondClient is BinanceClient ? "Binance" : "NiceHash";
 }
