@@ -14,24 +14,24 @@ public partial class ArbitrageBotUC : UserControl
         InitializeComponent();
         DataContext = new ArbitrageBotVM();
         
-        var botKeys = ConfigInitializer.GetClientConfig();
-        var bt = new ArbitrageBot(new ArbitrageInfo
-        {
-            FirstClient = new BinanceClient(new BinanceOptions()
-            {
-                PublicKey = botKeys.BinanceInfo.PublicKey,
-                SecretKey = botKeys.BinanceInfo.SecretKey
-            }),
-            SecondClient = new NiceHashClient(new NiceHashOptions
-            {
-                PublicKey = botKeys.NiceHashInfo.PublicKey,
-                SecretKey = botKeys.NiceHashInfo.SecretKey,
-                OrganizationId = botKeys.NiceHashInfo.OrganizationId
-            }),
-            Amount = 1,
-            FirstCoin = "BTC",
-            SecondCoin = "USDT"
-        });
-        bt.StartBot();
+        // var botKeys = ConfigInitializer.GetClientConfig();
+        // var bt = new ArbitrageBot(new ArbitrageInfo
+        // {
+        //     FirstClient = new BinanceClient(new BinanceOptions()
+        //     {
+        //         PublicKey = botKeys.BinanceInfo.PublicKey,
+        //         SecretKey = botKeys.BinanceInfo.SecretKey
+        //     }),
+        //     SecondClient = new NiceHashClient(new NiceHashOptions
+        //     {
+        //         PublicKey = botKeys.NiceHashInfo.PublicKey,
+        //         SecretKey = botKeys.NiceHashInfo.SecretKey,
+        //         OrganizationId = botKeys.NiceHashInfo.OrganizationId
+        //     }),
+        //     Amount = 1,
+        //     FirstCoin = "BTC",
+        //     SecondCoin = "USDT"
+        // });
+        // bt.StartBot();
     }
 }

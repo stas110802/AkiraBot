@@ -41,12 +41,18 @@ public class LoginVM : ObservableObject, ICommandInitializer
         var users = _repository.GetAll();
         foreach (var user in users)
         {
-            if(user.Login != Login) continue;
+            if(user.Login != Login) 
+                continue;
+            
             var unmanagedPtr = Marshal.SecureStringToGlobalAllocUnicode(SecurePassword);
             var strPsw = Marshal.PtrToStringUni(unmanagedPtr);//  bruh(
-            if (user.Password != strPsw) continue;
+            if (user.Password != strPsw) 
+                break;
+            
+            ApplicationWindowVM.TotalUser = user;
             new ApplicationWindow().Show();
             OnFrameStopped.Invoke(null, EventArgs.Empty);
+
             return;
         }
 

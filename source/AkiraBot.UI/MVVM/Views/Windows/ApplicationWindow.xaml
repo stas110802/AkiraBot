@@ -157,7 +157,8 @@
                         
                         <!-- 7 - Config -->
                         <RadioButton Style="{StaticResource menuButton}"
-                                     Tag="{StaticResource color1}"> 
+                                     Tag="{StaticResource color1}"
+                                     Command="{Binding ConfigCommand}"> 
                             <StackPanel Orientation="Horizontal">
                                 <fa:IconImage Icon="Server" Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Config" Style="{StaticResource menuButtonText}"/>
